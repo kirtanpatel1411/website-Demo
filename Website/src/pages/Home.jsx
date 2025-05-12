@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Box, Typography, Button, Paper } from "@mui/material";
@@ -31,6 +32,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 
 function Home() {
+  const navigate = useNavigate();
   const PersonList = [
     {
       name: "Sarah L",
@@ -170,7 +172,6 @@ function Home() {
             alignItems: "center",
             justifyContent: "center",
             borderRadius: 4,
-            // backgroundColor : "#f0f0f0",
           }}
         >
           <Box
@@ -184,7 +185,6 @@ function Home() {
               textAlign: "center",
             }}
           >
-            {/* Highlighted Heading Block */}
             <Paper
               elevation={0}
               sx={{
@@ -219,21 +219,19 @@ function Home() {
               </Typography>
             </Paper>
 
-            {/* Subtitle */}
             <Typography
               variant="h4"
               component="h2"
               sx={{
                 color: "#333",
                 fontWeight: 500,
-                // maxWidth: "800px",
+
                 mb: 2,
               }}
             >
               with Online Design and Development Courses.
             </Typography>
 
-            {/* Description */}
             <Typography
               variant="subtitle1"
               sx={{ color: "#555", maxWidth: "600px", mb: 5 }}
@@ -241,7 +239,6 @@ function Home() {
               Learn from Industry Experts and Enhance Your Skills.
             </Typography>
 
-            {/* Action Buttons */}
             <Stack direction="row" spacing={3}>
               <Button
                 variant="contained"
@@ -470,7 +467,13 @@ function Home() {
               </Typography>
             </Grid>
             <Grid xs={12} sm={6} md={4} lg={3}>
-              <Button variant="contained" sx={{ backgroundColor: "#FF9500" }}>
+              <Button
+                onClick={() => {
+                  navigate("/Courses");
+                }}
+                variant="contained"
+                sx={{ backgroundColor: "#FF9500" }}
+              >
                 View All
               </Button>
             </Grid>
@@ -480,7 +483,6 @@ function Home() {
               md={4}
               lg={3}
               container
-              // spacing={2}
               sx={{
                 width: "100%",
                 display: "flex",
@@ -775,7 +777,6 @@ function Home() {
               <Button
                 variant="outlined"
                 sx={{
-                  // backgroundColor: "#f0f0f0",
                   border: "none",
                   color: "#000",
                   p: 1,
@@ -859,7 +860,6 @@ function Home() {
                     md={4}
                     lg={3}
                     sx={{
-                      // backgroundColor: "#fff9f0",
                       padding: "20px",
                       display: "flex",
                       alignItems: "flex-end",
@@ -879,11 +879,9 @@ function Home() {
                     container
                     spacing={2}
                     sx={{
-                      // width: "100%",
                       display: "flex",
                       flexDirection: "column",
                       textAlign: "center",
-                      // alignItems: "center",
                     }}
                   >
                     <Typography variant="h6">Available Features</Typography>
@@ -943,7 +941,7 @@ function Home() {
                     padding: "20px",
                     display: "flex",
                     flexDirection: "column",
-                    // justifyContent: "space-around",
+
                     gap: "30px",
                   }}
                 >
@@ -956,7 +954,7 @@ function Home() {
                       backgroundColor: "#fff9f0",
                       padding: "20px",
                       display: "flex",
-                      // alignItems: "center",
+
                       justifyContent: "center",
                       fontSize: "24px",
                       fontWeight: "bold",
@@ -970,7 +968,6 @@ function Home() {
                     md={4}
                     lg={3}
                     sx={{
-                      // backgroundColor: "#fff9f0",
                       padding: "20px",
                       display: "flex",
                       alignItems: "flex-end",
@@ -994,7 +991,6 @@ function Home() {
                       display: "flex",
                       flexDirection: "column",
                       textAlign: "center",
-                      // alignItems: "center",
                     }}
                   >
                     <Typography variant="h6">Available Features</Typography>

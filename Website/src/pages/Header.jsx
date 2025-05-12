@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <Box>
-      {/* Top Banner */}
+
       <Box
         sx={{
           backgroundColor: "#FF9500",
@@ -40,17 +40,17 @@ export default function Header() {
         <ArrowForwardIcon fontSize="small" />
       </Box>
 
-      {/* Main Navbar */}
+     
       <AppBar
         position="static"
         sx={{ backgroundColor: "#f0f0f0", boxShadow: "none" }}
       >
         <Toolbar sx={{ justifyContent: "space-between" }}>
-          {/* Left - Logo + Menu */}
+         
           <Stack direction="row" alignItems="center" spacing={2}>
             <Box
               component="img"
-              src="https://dummyimage.com/32x32/ffa000/ffffff&text=S" // Replace with your logo
+              src="https://dummyimage.com/32x32/ffa000/ffffff&text=S" 
               alt="logo"
               sx={{ width: 40, height: 40, borderRadius: 1 }}
             />
@@ -66,7 +66,7 @@ export default function Header() {
                 className="active ? 'active' : ''"
                 key={item.label}
                 onClick={() => handleNavigation(item.path)}
-                // key={item.label}
+           
                 sx={{
                   color: location.pathname === item.path ? "#000" : "#555",
                   textTransform: "none",
@@ -84,7 +84,7 @@ export default function Header() {
             ))}
           </Stack>
 
-          {/* Right - Auth Buttons */}
+   
           <Stack direction="row" alignItems="center" spacing={2}>
             <Button sx={{ color: "#555" }}>Sign Up</Button>
             <Button
