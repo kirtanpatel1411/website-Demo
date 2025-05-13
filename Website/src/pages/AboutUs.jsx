@@ -11,6 +11,7 @@ import icon6 from "../assets/icon6.png";
 import icon7 from "../assets/icon7.png";
 import icon8 from "../assets/icon8.png";
 import Box from "@mui/material/Box";
+import theme from "../theme/theme";
 
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -75,14 +76,10 @@ function AboutUs() {
       <Container
         maxWidth="xl"
         sx={{
-          backgroundColor: "#f0f0f0",
+          backgroundColor: theme.palette.background.default,
         }}
       >
         <Grid
-          xs={12}
-          sm={6}
-          md={4}
-          lg={3}
           container
           spacing={5}
           sx={{
@@ -98,21 +95,24 @@ function AboutUs() {
               alignItems: "center",
               justifyContent: "space-between",
               px: 2,
-              py: 2, 
+              py: 2,
             }}
           >
-         
             <Grid item xs={12} md={6}>
-              <Typography variant="h3" component="h2" fontWeight="bold">
+              <Typography
+                variant="h3"
+                // component="h2"
+                // color={theme.palette.fontcolor.dark}
+                // fontWeight="bold"
+              >
                 About Skillbridge
               </Typography>
             </Grid>
 
-      
             <Grid item xs={12} md={6}>
               <Typography
                 variant="body1"
-                sx={{ color: "#555", lineHeight: 1.8 }}
+                sx={{ color:theme.palette.fontcolor.light, lineHeight: 1.8 }}
               >
                 Welcome to our platform, where we are passionate about
                 empowering individuals to master the world of design and
@@ -124,7 +124,7 @@ function AboutUs() {
           </Grid>
 
           <Divider
-            color="#000"
+            color={theme.palette.fontcolor.main}
             sx={{ width: "100%", height: 1 }}
           />
           <Grid container spacing={3}>
@@ -140,8 +140,8 @@ function AboutUs() {
               }}
             >
               <Grid xs={12} sm={6} md={4} lg={3}>
-                <Typography variant="h4">Achievements</Typography>
-                <Typography variant="body1">
+                <Typography variant="h4" color={theme.palette.fontcolor.main}>Achievements</Typography>
+                <Typography variant="body1" color={theme.palette.fontcolor.light}>
                   Our commitment to excellence has led us to achieve significant
                   milestones along our journey. Here are some of our notable
                   milestones along our journey. Here are some of our notable
@@ -153,23 +153,29 @@ function AboutUs() {
             </Grid>
             <Grid
               container
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
               sx={{
+                width: "100%",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
               {Achievements.map((item) => (
-                <Grid key={item.id} xs={12} sm={6} md={4} lg={3}>
+                <Grid
+                  key={item.id}
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  sx={{
+                    width: "680px",
+                    height: "280px",
+                  }}
+                >
                   <Card
                     sx={{
-                      width: "600px",
-                      height: "260px",
+                      width: "100%",
+                      height: "100%",
                       display: "flex",
                       padding: 5,
                       borderRadius: 4,
@@ -182,7 +188,7 @@ function AboutUs() {
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "center",
-                        gap: 3,
+                        gap: 2,
                       }}
                     >
                       <Grid item xs={12}>
@@ -190,15 +196,15 @@ function AboutUs() {
                           src={item.image}
                           sx={{
                             borderRadius: 1,
-                            border: " 1px solid #ff9500",
+                            border: `1px solid ${theme.palette.primary.main}`,
                           }}
                         />
                       </Grid>
                       <Grid item xs={12}>
-                        <Typography variant="h4">{item.title}</Typography>
+                        <Typography variant="h5">{item.title}</Typography>
                       </Grid>
                       <Grid item xs={12}>
-                        <Typography variant="body1">
+                        <Typography variant="body1" >
                           {item.description}
                         </Typography>
                       </Grid>
@@ -210,10 +216,6 @@ function AboutUs() {
           </Grid>
           <Grid container spacing={3}>
             <Grid
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
               container
               spacing={3}
               sx={{
@@ -234,23 +236,29 @@ function AboutUs() {
             </Grid>
             <Grid
               container
-              item
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
               sx={{
+                width: "100%",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
               }}
             >
               {Goals.map((item) => (
-                <Grid key={item.id} xs={12} sm={6} md={4} lg={3}>
+                <Grid
+                  key={item.id}
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  sx={{
+                    width: "680px",
+                    height: "280px",
+                  }}
+                >
                   <Card
                     sx={{
-                      width: "600px",
-                      height: "260px",
+                      width: "100%",
+                      height: "100%",
                       display: "flex",
                       padding: 5,
                       borderRadius: 4,
@@ -258,12 +266,12 @@ function AboutUs() {
                   >
                     <Grid
                       container
-                      spacing={2}
+                      spacing={1}
                       sx={{
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "center",
-                        gap: 3,
+                        gap: 2,
                       }}
                     >
                       <Grid item xs={12}>
@@ -271,12 +279,12 @@ function AboutUs() {
                           src={item.image}
                           sx={{
                             borderRadius: 1,
-                            border: " 1px solid #ff9500",
+                            border: ` 1px solid ${theme.palette.primary.main}`,
                           }}
                         />
                       </Grid>
                       <Grid item xs={12}>
-                        <Typography variant="h4">{item.title}</Typography>
+                        <Typography variant="h5">{item.title}</Typography>
                       </Grid>
                       <Grid item xs={12}>
                         <Typography variant="body1">
@@ -291,21 +299,23 @@ function AboutUs() {
           </Grid>
           <Box
             sx={{
-              backgroundColor: "#fff",
+              backgroundColor: theme.palette.background.main,
               padding: { xs: 4, md: 6 },
               borderRadius: 3,
               overflow: "hidden",
               width: "100%",
-              height: "100px",
+              height: "auto",
             }}
           >
             <Grid container alignItems="center" justifyContent="space-between">
               <Grid item xs={12} md={8} zIndex={1}>
-                <Typography variant="h4" fontWeight="bold" gutterBottom>
-                  <span style={{ color: "#ff9500" }}>Together</span>, let’s
-                  shape the future of digital innovation
+                <Typography variant="h4" fontWeight="bold" gutterBottom >
+                  <span style={{ color: `${theme.palette.primary.main}` }}>
+                    Together
+                  </span>
+                  , let’s shape the future of digital innovation
                 </Typography>
-                <Typography variant="body1" color="textSecondary">
+                <Typography variant="body1" >
                   Join us on this exciting learning journey and unlock your
                   potential in design and development.
                 </Typography>
@@ -322,16 +332,12 @@ function AboutUs() {
               >
                 <Button
                   variant="contained"
+                  className="orange"
                   sx={{
-                    backgroundColor: "#ff9500",
-                    color: "#fff",
                     borderRadius: 2,
                     paddingX: 3,
                     paddingY: 1,
                     textTransform: "none",
-                    "&:hover": {
-                      backgroundColor: "#e07d00",
-                    },
                   }}
                 >
                   Join Now

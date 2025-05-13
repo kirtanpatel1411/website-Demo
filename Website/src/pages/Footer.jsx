@@ -1,4 +1,5 @@
-import React from "react";
+// import React from "react";
+import theme from "../theme/theme";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -10,13 +11,19 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import RoomIcon from "@mui/icons-material/Room";
+import logo from "../assets/Logo.png";
 
 function Footer() {
   return (
     <>
       <Container
         maxWidth="xl"
-        sx={{ backgroundColor: "#fff", height: "auto", mt: 4, mb: 4 }}
+        sx={{
+          backgroundColor: theme.palette.background.main,
+          height: "auto",
+          mt: 4,
+          mb: 4,
+        }}
       >
         <Grid
           container
@@ -40,26 +47,23 @@ function Footer() {
             }}
           >
             <Grid item xs={4}>
-              <img
-                src="https://dummyimage.com/32x32/ffa000/ffffff&text=S"
-                alt=""
-              />
+              <img src={logo} alt="" />
             </Grid>
             <Grid item xs={4}>
-              <Typography>
+              <Typography  variant="body1"color={theme.palette.fontcolor.main}>
                 {" "}
                 <EmailIcon />
                 bhimanikirtan7@gmail.com
               </Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography>
+              <Typography variant="body1" color={theme.palette.fontcolor.main}>
                 <PhoneIcon />
                 +91 9714022044
               </Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography>
+              <Typography  variant="body1" color={theme.palette.fontcolor.main}>
                 <RoomIcon /> surat
               </Typography>
             </Grid>
@@ -75,42 +79,31 @@ function Footer() {
             }}
           >
             <Grid item xs={4}>
-              <Typography variant="h5">Home</Typography>
+              <Typography variant="h5" color={theme.palette.fontcolor.dark}>
+                Home
+              </Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography>Benefits</Typography>
+              <Typography variant="body1" color={theme.palette.fontcolor.main}>
+                Benefits
+              </Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography>Our Courses</Typography>
+              <Typography variant="body1" color={theme.palette.fontcolor.main}>
+                Our Courses
+              </Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography> Our Testimonials</Typography>
+              <Typography variant="body1" color={theme.palette.fontcolor.main}>
+                {" "}
+                Our Testimonials
+              </Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography>Our FAQ</Typography>
-            </Grid>
-          </Grid>
-          <Grid
-            container
-            xs={12}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              justifyContent: "center",
-            }}
-          >
-            <Grid item xs={4}>
-              <Typography variant="h5">About Us</Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography> Company</Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography>Achievements</Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography> Our Goals</Typography>
+              <Typography  variant="body1"color={theme.palette.fontcolor.main}>
+                {" "}
+                Our FAQ
+              </Typography>
             </Grid>
           </Grid>
           <Grid
@@ -124,13 +117,36 @@ function Footer() {
             }}
           >
             <Grid item xs={4}>
-              <Typography variant="h5">Social Profiles</Typography>
+              <Typography variant="h5"  color={theme.palette.fontcolor.dark}>About Us</Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography  variant="body1" color={theme.palette.fontcolor.main}> Company</Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography   variant="body1" color={theme.palette.fontcolor.main}>Achievements</Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography  variant="body1" color={theme.palette.fontcolor.main}> Our Goals</Typography>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            xs={12}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              justifyContent: "center",
+            }}
+          >
+            <Grid item xs={4}>
+              <Typography variant="h5"  color={theme.palette.fontcolor.dark}>Social Profiles</Typography>
             </Grid>
             <Grid container item xs={4}>
               <Avatar
                 sx={{
                   borderRadius: 2,
-                  backgroundColor: "#f0f0f0",
+                  backgroundColor: theme.palette.background.default,
                   color: "#000",
                 }}
               >
@@ -140,7 +156,7 @@ function Footer() {
                 <Avatar
                   sx={{
                     borderRadius: 2,
-                    backgroundColor: "#f0f0f0",
+                    backgroundColor: theme.palette.background.default,
                     color: "#000",
                   }}
                 >
@@ -151,7 +167,7 @@ function Footer() {
                 <Avatar
                   sx={{
                     borderRadius: 2,
-                    backgroundColor: "#f0f0f0",
+                    backgroundColor: theme.palette.background.default,
                     color: "#000",
                   }}
                 >
@@ -174,7 +190,7 @@ function Footer() {
             justifyContent: "center",
           }}
         >
-          <Typography variant="body1">
+          <Typography variant="body1"  color={theme.palette.fontcolor.light}>
             © 2023 Skillbridge. All rights reserved.
           </Typography>
         </Grid>

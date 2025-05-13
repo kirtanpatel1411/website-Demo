@@ -1,4 +1,5 @@
 import React from "react";
+import theme from "../theme/theme";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Typography, Button, Divider } from "@mui/material";
@@ -19,7 +20,7 @@ function Pricing() {
       <Container
         maxWidth="xl"
         sx={{
-          backgroundColor: "#f0f0f0",
+          backgroundColor: theme.palette.background.default,
         }}
       >
         <Grid
@@ -47,7 +48,7 @@ function Pricing() {
           >
      
             <Grid item xs={12} md={6}>
-              <Typography variant="h3" component="h2" fontWeight="bold">
+              <Typography variant="h3" component="h2" fontWeight="bold"  color={theme.palette.fontcolor.dark}>
                 Our Pricings
               </Typography>
             </Grid>
@@ -56,7 +57,7 @@ function Pricing() {
             <Grid item xs={12} md={6}>
               <Typography
                 variant="body1"
-                sx={{ color: "#555", lineHeight: 1.8 }}
+                sx={{ color: theme.palette.fontcolor.light, lineHeight: 1.8 }}
               >
                 Welcome to SkillBridge's Pricing Plan page, where we offer two
                 comprehensive options to cater to your needs: Free and Pro. We
@@ -71,7 +72,7 @@ function Pricing() {
           </Grid>
 
           <Divider
-            color="#000"
+             color={theme.palette.fontcolor.main}
             sx={{ width: "100%", height: 1 }}
           />
           <Grid
@@ -93,27 +94,21 @@ function Pricing() {
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                backgroundColor: "#fff",
+                backgroundColor: theme.palette.background.main,
                 p: 2,
                 borderRadius: 5,
               }}
             >
               <Button
+              className="Gray"
                 variant="outlined"
-                sx={{
-                  border: "none",
-                  color: "#000",
-                  p: 1,
-                }}
               >
                 Yearly
               </Button>
               <Button
-                variant="outlined"
+              className="orange"
+                variant="contained"
                 sx={{
-                  backgroundColor: "#FF9500",
-                  border: "none",
-                  color: "#fff",
                   p: 1,
                   borderRadius: 3,
                 }}
@@ -134,7 +129,7 @@ function Pricing() {
                 display: "flex",
                 justifyContent: "center",
                 flexDirection: "row",
-                backgroundColor: "#fff",
+                backgroundColor:  theme.palette.background.main,
                 pt: 8,
                 pb: 8,
                 borderRadius: 3,
@@ -169,7 +164,7 @@ function Pricing() {
                     md={4}
                     lg={3}
                     sx={{
-                      backgroundColor: "#fff9f0",
+                      backgroundColor: theme.palette.primary.light,
                       padding: "20px",
                       display: "flex",
                       justifyContent: "center",
@@ -209,7 +204,7 @@ function Pricing() {
                       textAlign: "center",
                     }}
                   >
-                    <Typography variant="h6">Available Features</Typography>
+                    <Typography variant="h5"  color={theme.palette.fontcolor.main}>Available Features</Typography>
                     {[
                       "Access to selected free courses",
                       "Limited course materials and resources",
@@ -220,20 +215,20 @@ function Pricing() {
                       "Early access to new courses and updates",
                     ].map((item, index) => (
                       <Stack direction="column" spacing={8} key={index}>
-                        <Grid
+                        <Grid  color={theme.palette.fontcolor.light}
                           xs={12}
                           sm={6}
                           md={4}
                           lg={3}
                           sx={{
-                            fontSize: "24px",
+                            fontSize: "20px",
                             width: "100%",
-                            backgroundColor: "#fff",
+                            backgroundColor:  theme.palette.background.main,
                             padding: "10px",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "flex-start",
-                            border: "1px solid #f0f0f0",
+                            border: `1px solid ${theme.palette.background.default}`,
                             borderRadius: 2,
                           }}
                         >
@@ -245,13 +240,11 @@ function Pricing() {
                   </Grid>
                   <Grid xs={12} sm={6} md={4} lg={3}>
                     <Button
-                      variant="outlined"
+                    className="orange"
+                      variant="contained"
                       sx={{
                         width: "100%",
                         height: "50px",
-                        border: "none",
-                        backgroundColor: "#ff9500",
-                        color: "#fff",
                       }}
                     >
                       Get Started
@@ -275,7 +268,7 @@ function Pricing() {
                     md={4}
                     lg={3}
                     sx={{
-                      backgroundColor: "#fff9f0",
+                      backgroundColor: theme.palette.primary.light,
                       padding: "20px",
                       display: "flex",
                       justifyContent: "center",
@@ -316,7 +309,7 @@ function Pricing() {
                       textAlign: "center",
                     }}
                   >
-                    <Typography variant="h6">Available Features</Typography>
+                    <Typography variant="h5"  color={theme.palette.fontcolor.main}>Available Features</Typography>
                     {[
                       "Unlimited access to all courses",
                       "Unlimited course materials and resources",
@@ -327,21 +320,21 @@ function Pricing() {
                       "Early access to new courses and updates",
                     ].map((item, index) => (
                       <Stack direction="column" spacing={8} key={index}>
-                        <Grid
+                        <Grid  color={theme.palette.fontcolor.light}
                           item
                           xs={12}
                           sm={6}
                           md={4}
                           lg={3}
                           sx={{
-                            fontSize: "24px",
+                            fontSize: "20px",
                             width: "100%",
-                            backgroundColor: "#fff",
+                            backgroundColor: theme.palette.background.main,
                             padding: "10px",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "flex-start",
-                            border: "1px solid #f0f0f0",
+                            border: `1px solid ${theme.palette.background.default}`,
                             borderRadius: 2,
                           }}
                         >
@@ -353,13 +346,11 @@ function Pricing() {
                   </Grid>
                   <Grid xs={12} sm={6} md={4} lg={3}>
                     <Button
-                      variant="outlined"
+                    className="orange"
+                      variant="contained"
                       sx={{
                         width: "100%",
                         height: "50px",
-                        border: "none",
-                        backgroundColor: "#ff9500",
-                        color: "#fff",
                       }}
                     >
                       Get Started
@@ -376,7 +367,7 @@ function Pricing() {
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "center",
-                backgroundColor: "#fff",
+                backgroundColor: theme.palette.background.main,
                 borderRadius: 3,
                 mb: 5,
               }}
@@ -391,8 +382,8 @@ function Pricing() {
                   gap: "20px",
                 }}
               >
-                <Typography variant="h2">Frequently Asked Questions</Typography>
-                <Typography variant="h5">
+                <Typography variant="h2"  color={theme.palette.fontcolor.dark}>Frequently Asked Questions</Typography>
+                <Typography variant="h5"  color={theme.palette.fontcolor.light}>
                   Still you have any questions? Contact our Team via
                   support@skillbridge.com
                 </Typography>
@@ -400,7 +391,7 @@ function Pricing() {
                   sx={{
                     width: "30%",
                     padding: "15px",
-                    border: " 2px solid #f0f0f0",
+                    border: ` 2px solid ${theme.palette.background.default}`,
                     color: "#000",
                   }}
                   variant="outlined"

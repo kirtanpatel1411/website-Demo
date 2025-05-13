@@ -1,4 +1,5 @@
 import React from "react";
+import theme from "../theme/theme";
 import { useNavigate } from "react-router";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -157,7 +158,7 @@ function Home() {
       <Container
         maxWidth="xl"
         sx={{
-          backgroundColor: "#f0f0f0",
+          backgroundColor: theme.palette.background.default,
         }}
       >
         <Grid
@@ -194,13 +195,13 @@ function Home() {
                 py: 2,
                 px: 4,
                 mb: 4,
-                backgroundColor: "#fff",
-                color: "#000",
+                backgroundColor: theme.palette.background.main,
+                color: theme.palette.fontcolor.dark,
               }}
             >
               <Box
                 sx={{
-                  backgroundColor: "#FFF1DC",
+                  backgroundColor: theme.palette.primary.light,
                   borderRadius: 2,
                   p: 1.5,
                   display: "flex",
@@ -209,10 +210,17 @@ function Home() {
                   mr: 2,
                 }}
               >
-                <BoltIcon sx={{ color: "#000" }} />
+                <BoltIcon sx={{ color: theme.palette.fontcolor.dark }} />
               </Box>
-              <Typography variant="h4" component="h1" sx={{ fontWeight: 600 }}>
-                <Box component="span" sx={{ color: "#FFA000" }}>
+              <Typography
+                variant="h4"
+                sx={{ fontWeight: 600 }}
+                color={theme.palette.fontcolor.dark}
+              >
+                <Box
+                  component="span"
+                  sx={{ color: theme.palette.primary.main }}
+                >
                   Unlock
                 </Box>{" "}
                 Your Creative Potential
@@ -221,11 +229,9 @@ function Home() {
 
             <Typography
               variant="h4"
-              component="h2"
               sx={{
-                color: "#333",
+                color: theme.palette.fontcolor.main,
                 fontWeight: 500,
-
                 mb: 2,
               }}
             >
@@ -233,46 +239,37 @@ function Home() {
             </Typography>
 
             <Typography
-              variant="subtitle1"
-              sx={{ color: "#555", maxWidth: "600px", mb: 5 }}
+              variant="body1"
+              sx={{
+                mb: 5,
+              }}
             >
               Learn from Industry Experts and Enhance Your Skills.
             </Typography>
 
             <Stack direction="row" spacing={3}>
               <Button
+                className="orange"
                 variant="contained"
                 size="large"
                 sx={{
-                  backgroundColor: "#FFA000",
-                  color: "#fff",
-                  fontWeight: 600,
                   px: 4,
                   py: 1.5,
                   borderRadius: 2,
                   textTransform: "none",
-                  "&:hover": {
-                    backgroundColor: "#FF8F00",
-                  },
                 }}
               >
                 Explore Courses
               </Button>
               <Button
+                className="white"
                 variant="outlined"
                 size="large"
                 sx={{
-                  backgroundColor: "#fff",
-                  color: "#000",
-                  fontWeight: 600,
                   px: 4,
                   py: 1.5,
                   borderRadius: 2,
                   textTransform: "none",
-                  borderColor: "#ccc",
-                  "&:hover": {
-                    backgroundColor: "#f5f5f5",
-                  },
                 }}
               >
                 View Pricing
@@ -284,11 +281,11 @@ function Home() {
             divider={<Divider orientation="vertical" flexItem />}
             sx={{
               height: "70px",
-              width: "90%",
+              width: "100%",
               display: "flex",
               justifyContent: "space-evenly",
               alignItems: "center",
-              backgroundColor: "#fff",
+              backgroundColor: theme.palette.background.main,
             }}
           >
             {[
@@ -308,9 +305,10 @@ function Home() {
                 }}
               >
                 <Typography
+                  variant="h6"
                   sx={{
-                    fontSize: 20,
-                    color: "#000",
+                    // fontSize: 20,
+                    // color: theme.palette.fontcolor.dark,
                     fontWeight: 600,
                   }}
                 >
@@ -319,7 +317,7 @@ function Home() {
               </Box>
             ))}
           </Stack>
-          <Grid container spacing={5} xs={12} sm={6} md={4} lg={3}>
+          <Grid container spacing={5} xs={12}>
             <Box
               sx={{
                 width: "1400px",
@@ -342,36 +340,26 @@ function Home() {
           <Grid
             container
             spacing={3}
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
             sx={{
               width: "90%",
             }}
           >
             <Grid xs={12} sm={6} md={4} lg={3}>
-              <Typography variant="h2" component="h2">
-                Benefits
-              </Typography>
-              <Typography variant="h6">
+              <Typography variant="h2">Benefits</Typography>
+              <Typography variant="body1">
                 Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam
                 eget elit id imperdiet et. Cras eu sit dignissim lorem nibh et.
                 Ac cum eget habitasse in velit fringilla feugiat senectus in.
               </Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-              <Button variant="contained" sx={{ backgroundColor: "#FF9500" }}>
+              <Button className="orange" variant="contained">
                 View More
               </Button>
             </Grid>
             <Grid
               container
               spacing={2}
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
               sx={{
                 width: "100%",
                 display: "flex",
@@ -381,13 +369,10 @@ function Home() {
               {CardItem.map((item) => {
                 return (
                   <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={3}
                     container
                     key={item.id}
                     sx={{
+                      width: "32%",
                       display: "flex",
                       alignItems: "center",
                     }}
@@ -396,41 +381,43 @@ function Home() {
                       <Box
                         size={4}
                         sx={{
-                          width: "380px",
-                          height: "350px",
+                          width: "100%",
+                          height: "400px",
                           padding: "20px",
                           borderRadius: 3,
-                          backgroundColor: "#ffff",
+                          backgroundColor: theme.palette.background.main,
                           position: "relative",
                         }}
                       >
                         <Grid xs={12} sm={6} md={4} lg={3}>
                           <Typography
+                            // color={theme.palette.fontcolor.dark}
                             sx={{
                               display: "flex",
                               justifyContent: "end",
-                              fontWeight: "bold",
+                              // fontWeight: "bold",
                             }}
-                            variant="h2"
+                            variant="h1"
                           >
                             {item.id}
                           </Typography>
                         </Grid>
                         <Grid xs={12} sm={6} md={4} lg={3}>
-                          <Typography variant="h4">{item.title}</Typography>
+                          <Typography variant="h5">{item.title}</Typography>
                         </Grid>
                         <Grid xs={12} sm={6} md={4} lg={3}>
                           <Typography variant="body1">{item.about}</Typography>
                         </Grid>
                         <Grid xs={12} sm={6} md={4} lg={3}>
                           <Button
+                            className="Gray"
                             variant="outlined"
                             sx={{
                               position: "absolute",
                               bottom: 20,
                               right: 20,
                               padding: 3,
-                              borderRadius: 5,
+                              borderRadius: 3,
                             }}
                           >
                             {" "}
@@ -446,10 +433,6 @@ function Home() {
           </Grid>
 
           <Grid
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
             container
             spacing={3}
             sx={{
@@ -457,10 +440,8 @@ function Home() {
             }}
           >
             <Grid item xs={12} sm={6} md={4} lg={3}>
-              <Typography variant="h2" component="h2">
-                Our Courses
-              </Typography>
-              <Typography variant="h6">
+              <Typography variant="h2">Our Courses</Typography>
+              <Typography variant="body1">
                 Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam
                 eget elit id imperdiet et. Cras eu sit dignissim lorem nibh et.
                 Ac cum eget habitasse in velit fringilla feugiat senectus in.
@@ -468,46 +449,50 @@ function Home() {
             </Grid>
             <Grid xs={12} sm={6} md={4} lg={3}>
               <Button
+                className="orange"
                 onClick={() => {
                   navigate("/Courses");
+                  window.scrollTo(0, 0);
                 }}
                 variant="contained"
-                sx={{ backgroundColor: "#FF9500" }}
               >
                 View All
               </Button>
             </Grid>
             <Grid
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
               container
               sx={{
                 width: "100%",
                 display: "flex",
+                flexDirection: "row",
                 justifyContent: "center",
               }}
             >
               {CoursesList.map((item) => {
                 return (
                   <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={3}
                     container
                     key={item.id}
                     sx={{
-                      display: "flex",
-                      alignItems: "center",
+                      width: "650px",
+                      height: "650px",
                     }}
                   >
-                    <Grid item xs={12} sm={6} md={4} lg={3}>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={6}
+                      md={4}
+                      lg={3}
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    >
                       <Card
                         sx={{
-                          width: "560px",
-                          height: "600px",
+                          width: "100%",
+                          height: "100%",
                           borderRadius: 2,
                           padding: "40px",
                           display: "flex",
@@ -521,10 +506,6 @@ function Home() {
                           title="green iguana"
                         />
                         <Grid
-                          xs={12}
-                          sm={6}
-                          md={4}
-                          lg={3}
                           container
                           spacing={2}
                           sx={{
@@ -556,23 +537,25 @@ function Home() {
                           </Grid>
                         </Grid>
                         <CardContent>
-                          <Typography variant="h5">{item.title}</Typography>
+                          <Typography
+                            variant="h5"
+                            color={theme.palette.fontcolor.main}
+                          >
+                            {item.title}
+                          </Typography>
                           <Typography
                             variant="body2"
-                            sx={{ color: "text.secondary" }}
+                            sx={{ color: theme.palette.fontcolor.light }}
                           >
                             {item.description}
                           </Typography>
                         </CardContent>
                         <CardActions>
                           <Button
+                            className="Gray"
                             variant="outlined"
                             sx={{
                               width: "100%",
-                              backgroundColor: "#f0f0f0",
-                              border: "none",
-                              color: "#000",
-                              borderRadius: 2,
                               p: 2,
                             }}
                           >
@@ -597,52 +580,58 @@ function Home() {
               width: "90%",
             }}
           >
-            <Grid xs={12} sm={6} md={4} lg={3}>
-              <Typography variant="h2" component="h2">
+            <Grid item xs={12}>
+              <Typography
+                variant="h2"
+                component="h2"
+                color={theme.palette.fontcolor.main}
+              >
                 Our Testimonials
               </Typography>
-              <Typography variant="h6">
+              <Typography variant="h6" color={theme.palette.fontcolor.light}>
                 Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam
                 eget elit id imperdiet et. Cras eu sit dignissim lorem nibh et.
                 Ac cum eget habitasse in velit fringilla feugiat senectus in.
               </Typography>
             </Grid>
             <Grid xs={12} sm={6} md={4} lg={3}>
-              <Button variant="contained" sx={{ backgroundColor: "#FF9500" }}>
+              <Button className="orange" variant="contained">
                 View More
               </Button>
             </Grid>
             <Grid
               container
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
               sx={{
                 width: "100%",
-                display: "flex",
-                justifyContent: "center",
               }}
             >
               {PersonList.map((item) => {
                 return (
                   <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={3}
                     container
                     key={item.id}
                     sx={{
+                      width: "650px",
+                      height: "250px",
                       display: "flex",
                       alignItems: "center",
                     }}
                   >
-                    <Grid item xs={12} sm={6} md={4} lg={3}>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={6}
+                      md={4}
+                      lg={3}
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                      }}
+                    >
                       <Card
                         sx={{
-                          width: "600px",
-                          height: "200px",
+                          width: "100%",
+                          height: "100%",
                           borderRadius: 2,
                           padding: "20px",
                           display: "flex",
@@ -652,10 +641,6 @@ function Home() {
                       >
                         <Box>
                           <Grid
-                            xs={12}
-                            sm={6}
-                            md={4}
-                            lg={3}
                             container
                             spacing={2}
                             sx={{
@@ -666,7 +651,12 @@ function Home() {
                             }}
                           >
                             <Grid xs={12} sm={6} md={4} lg={3}>
-                              <Typography variant="h6">{item.about}</Typography>
+                              <Typography
+                                variant="h5"
+                                color={theme.palette.fontcolor.light}
+                              >
+                                {item.about}
+                              </Typography>
                             </Grid>
                           </Grid>
                         </Box>
@@ -674,10 +664,6 @@ function Home() {
                         <Box>
                           <Grid
                             container
-                            xs={12}
-                            sm={6}
-                            md={4}
-                            lg={3}
                             sx={{
                               display: "flex",
                               justifyContent: "space-between",
@@ -713,17 +699,19 @@ function Home() {
                                   alignItems: "center",
                                 }}
                               >
-                                <Typography variant="h5">
+                                <Typography
+                                  variant="h5"
+                                  color={theme.palette.fontcolor.dark}
+                                >
                                   {item.name}
                                 </Typography>
                               </Grid>
                             </Grid>
                             <Grid xs={12} sm={6} md={4} lg={3}>
                               <Button
+                                variant="outlined"
+                                className="Gray"
                                 sx={{
-                                  backgroundColor: "#f0f0f0",
-                                  color: "#000",
-                                  p: 1,
                                   width: "100%",
                                 }}
                               >
@@ -740,10 +728,6 @@ function Home() {
             </Grid>
           </Grid>
           <Grid
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
             container
             spacing={3}
             sx={{
@@ -751,46 +735,42 @@ function Home() {
             }}
           >
             <Grid xs={12} sm={6} md={4} lg={3}>
-              <Typography variant="h2" component="h2">
+              <Typography
+                variant="h2"
+                component="h2"
+                color={theme.palette.fontcolor.main}
+              >
                 Our Pricing
               </Typography>
-              <Typography variant="h6">
+              <Typography variant="h6" color={theme.palette.fontcolor.light}>
                 Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam
                 eget elit id imperdiet et. Cras eu sit dignissim lorem nibh et.
                 Ac cum eget habitasse in velit fringilla feugiat senectus in.
               </Typography>
             </Grid>
             <Grid
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
               spacing={5}
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                backgroundColor: "#fff",
+                backgroundColor: theme.palette.background.main,
                 p: 2,
                 borderRadius: 5,
               }}
             >
               <Button
+                className="Gray"
                 variant="outlined"
                 sx={{
-                  border: "none",
-                  color: "#000",
-                  p: 1,
+                  borderRadius: 3,
                 }}
               >
                 Yearly
               </Button>
               <Button
-                variant="outlined"
+                className="orange"
+                variant="contained"
                 sx={{
-                  backgroundColor: "#FF9500",
-                  border: "none",
-                  color: "#fff",
-                  p: 1,
                   borderRadius: 3,
                 }}
               >
@@ -799,26 +779,16 @@ function Home() {
             </Grid>
             <Grid
               container
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
               sx={{
                 width: "100%",
-                display: "flex",
                 justifyContent: "center",
-                flexDirection: "row",
-                backgroundColor: "#fff",
+                backgroundColor: theme.palette.background.main,
                 pt: 8,
                 pb: 8,
-                borderRadius: 5,
+                borderRadius: 3,
               }}
             >
               <Grid
-                xs={12}
-                sm={6}
-                md={4}
-                lg={3}
                 container
                 sx={{
                   display: "flex",
@@ -844,7 +814,7 @@ function Home() {
                     md={4}
                     lg={3}
                     sx={{
-                      backgroundColor: "#fff9f0",
+                      backgroundColor: theme.palette.primary.light,
                       padding: "20px",
                       display: "flex",
                       justifyContent: "center",
@@ -884,7 +854,12 @@ function Home() {
                       textAlign: "center",
                     }}
                   >
-                    <Typography variant="h6">Available Features</Typography>
+                    <Typography
+                      variant="h6"
+                      color={theme.palette.fontcolor.main}
+                    >
+                      Available Features
+                    </Typography>
                     {[
                       "Access to selected free courses",
                       "Limited course materials and resources",
@@ -896,19 +871,20 @@ function Home() {
                     ].map((item, index) => (
                       <Stack direction="column" spacing={8} key={index}>
                         <Grid
+                          color={theme.palette.fontcolor.light}
                           xs={12}
                           sm={6}
                           md={4}
                           lg={3}
                           sx={{
-                            fontSize: "24px",
+                            fontSize: "20px",
                             width: "100%",
-                            backgroundColor: "#fff",
+                            backgroundColor: theme.palette.background.main,
                             padding: "10px",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "flex-start",
-                            border: "1px solid #f0f0f0",
+                            border: `1px solid ${theme.palette.background.default}`,
                             borderRadius: 2,
                           }}
                         >
@@ -920,13 +896,11 @@ function Home() {
                   </Grid>
                   <Grid xs={12} sm={6} md={4} lg={3}>
                     <Button
-                      variant="outlined"
+                      className="orange"
+                      variant="contained"
                       sx={{
                         width: "100%",
                         height: "50px",
-                        border: "none",
-                        backgroundColor: "#ff9500",
-                        color: "#fff",
                       }}
                     >
                       Get Started
@@ -951,7 +925,7 @@ function Home() {
                     md={4}
                     lg={3}
                     sx={{
-                      backgroundColor: "#fff9f0",
+                      backgroundColor: theme.palette.primary.light,
                       padding: "20px",
                       display: "flex",
 
@@ -993,7 +967,12 @@ function Home() {
                       textAlign: "center",
                     }}
                   >
-                    <Typography variant="h6">Available Features</Typography>
+                    <Typography
+                      variant="h6"
+                      color={theme.palette.fontcolor.main}
+                    >
+                      Available Features
+                    </Typography>
                     {[
                       "Unlimited access to all courses",
                       "Unlimited course materials and resources",
@@ -1005,20 +984,21 @@ function Home() {
                     ].map((item, index) => (
                       <Stack direction="column" spacing={8} key={index}>
                         <Grid
+                          color={theme.palette.fontcolor.light}
                           item
                           xs={12}
                           sm={6}
                           md={4}
                           lg={3}
                           sx={{
-                            fontSize: "24px",
+                            fontSize: "20px",
                             width: "100%",
-                            backgroundColor: "#fff",
+                            backgroundColor: theme.palette.background.main,
                             padding: "10px",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "flex-start",
-                            border: "1px solid #f0f0f0",
+                            border: `1px solid ${theme.palette.background.default}`,
                             borderRadius: 2,
                           }}
                         >
@@ -1030,13 +1010,11 @@ function Home() {
                   </Grid>
                   <Grid xs={12} sm={6} md={4} lg={3}>
                     <Button
-                      variant="outlined"
+                      className="orange"
+                      variant="contained"
                       sx={{
                         width: "100%",
                         height: "50px",
-                        border: "none",
-                        backgroundColor: "#ff9500",
-                        color: "#fff",
                       }}
                     >
                       Get Started
@@ -1054,7 +1032,7 @@ function Home() {
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
-              backgroundColor: "#fff",
+              backgroundColor: theme.palette.background.main,
               borderRadius: 3,
               mb: 5,
             }}
@@ -1069,16 +1047,19 @@ function Home() {
                 gap: "20px",
               }}
             >
-              <Typography variant="h2">Frequently Asked Questions</Typography>
-              <Typography variant="h5">
+              <Typography variant="h2" color={theme.palette.fontcolor.dark}>
+                Frequently Asked Questions
+              </Typography>
+              <Typography variant="h5" color={theme.palette.fontcolor.light}>
                 Still you have any questions? Contact our Team via
                 support@skillbridge.com
               </Typography>
               <Button
+                className="Gray"
                 sx={{
                   width: "30%",
                   padding: "15px",
-                  border: " 2px solid #f0f0f0",
+                  border: `2px solid ${theme.palette.background.default}`,
                   color: "#000",
                 }}
                 variant="outlined"
@@ -1087,15 +1068,6 @@ function Home() {
                 See All FAQ’s
               </Button>
             </Grid>
-            {/* <Grid
-              xs={6}
-              sx={{
-                width: "50%",
-                padding: "50px",
-              }}
-            >
-              
-            </Grid> */}
             <Card
               sx={{
                 width: "40%",

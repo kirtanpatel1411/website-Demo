@@ -18,6 +18,7 @@ import {
 
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
+import theme from "../theme/theme";
 
 function Contact() {
   return (
@@ -26,7 +27,7 @@ function Contact() {
       <Container
         maxWidth="xl"
         sx={{
-          backgroundColor: "#f0f0f0",
+          backgroundColor: theme.palette.background.default,
         }}
       >
         <Grid
@@ -53,7 +54,7 @@ function Contact() {
             }}
           >
            <Grid item xs={12} md={6}>
-              <Typography variant="h3" component="h2" fontWeight="bold">
+              <Typography variant="h3" >
                 Contact Us
               </Typography>
             </Grid>
@@ -62,7 +63,7 @@ function Contact() {
             <Grid item xs={12} md={6}>
               <Typography
                 variant="body1"
-                sx={{ color: "#555", lineHeight: 1.8 }}
+                sx={{lineHeight: 1.8 }}
               >
                 Welcome to SkillBridge's Pricing Plan page, where we offer two
                 comprehensive options to cater to your needs: Free and Pro. We
@@ -77,7 +78,7 @@ function Contact() {
           </Grid>
 
           <Divider
-            color="#000"
+            color={theme.palette.fontcolor.main}
             sx={{ width: "100%", height: 1 }}
           />
           <Grid
@@ -94,7 +95,7 @@ function Contact() {
                 justifyContent: "flex-start",
                 borderRadius: 3,
                 width: "100%",
-                backgroundColor: "#fff",
+                backgroundColor:  theme.palette.background.main,
               }}
             >
               <Box
@@ -128,7 +129,7 @@ function Contact() {
                       width: "40%",
                     }}
                   >
-                    <Typography variant="body1" mb={1}>
+                    <Typography variant="body1" mb={1} color={theme.palette.fontcolor.main}>
                       First Name
                     </Typography>
                     <TextField
@@ -146,7 +147,7 @@ function Contact() {
                       width: "40%",
                     }}
                   >
-                    <Typography variant="body1" mb={1}>
+                    <Typography variant="body1" mb={1} color={theme.palette.fontcolor.main}>
                       Last Name
                     </Typography>
                     <TextField
@@ -178,7 +179,7 @@ function Contact() {
                       width: "40%",
                     }}
                   >
-                    <Typography variant="body1" mb={1}>
+                    <Typography variant="body1" mb={1} color={theme.palette.fontcolor.main}>
                       Email
                     </Typography>
                     <TextField
@@ -196,7 +197,7 @@ function Contact() {
                       width: "40%",
                     }}
                   >
-                    <Typography variant="body1" mb={1}>
+                    <Typography variant="body1" mb={1} color={theme.palette.fontcolor.main}>
                       Phone
                     </Typography>
                     <TextField
@@ -225,7 +226,7 @@ function Contact() {
                       width: "84%",
                     }}
                   >
-                    <Typography variant="body1" mb={1}>
+                    <Typography variant="body1" mb={1} color={theme.palette.fontcolor.main}>
                       Subject
                     </Typography>
                     <TextField
@@ -253,7 +254,7 @@ function Contact() {
                       width: "84%",
                     }}
                   >
-                    <Typography variant="body1" mb={1}>
+                    <Typography variant="body1" mb={1} color={theme.palette.fontcolor.main}>
                       Message
                     </Typography>
                     <TextField
@@ -279,17 +280,13 @@ function Contact() {
            
                   <Grid item xs={12} textAlign="center">
                     <Button
+                    className="orange"
                       variant="contained"
                       sx={{
-                        backgroundColor: "#ff9500",
-                        color: "#fff",
                         borderRadius: 2,
                         paddingX: 4,
                         paddingY: 1.2,
                         textTransform: "none",
-                        "&:hover": {
-                          backgroundColor: "#e07d00",
-                        },
                       }}
                     >
                       Send Your Message
@@ -311,7 +308,7 @@ function Contact() {
                   sx={{
                     width: "80%",
                     height: "20%",
-                    backgroundColor: "#f0f0f0",
+                    backgroundColor: theme.palette.background.default,
                     display: "flex",
                     flexDirection: "column",
                     gap: 2,
@@ -320,13 +317,13 @@ function Contact() {
                   }}
                 >
                   <MailIcon />
-                  <Typography>support@skillbridge.com</Typography>
+                  <Typography variant="body1">support@skillbridge.com</Typography>
                 </Box>
                 <Box
                   sx={{
                     width: "80%",
                     height: "20%",
-                    backgroundColor: "#f0f0f0",
+                    backgroundColor: theme.palette.background.default,
                     display: "flex",
                     flexDirection: "column",
                     gap: 2,
@@ -335,13 +332,13 @@ function Contact() {
                   }}
                 >
                   <PhoneIcon />
-                  <Typography>9714022044</Typography>
+                  <Typography variant="body1">9714022044</Typography>
                 </Box>
                 <Box
                   sx={{
                     width: "80%",
                     height: "20%",
-                    backgroundColor: "#f0f0f0",
+                    backgroundColor: theme.palette.background.default,
                     display: "flex",
                     flexDirection: "column",
                     gap: 2,
@@ -350,13 +347,13 @@ function Contact() {
                   }}
                 >
                   <PlaceIcon />
-                  <Typography>Some Where in the World</Typography>
+                  <Typography variant="body1">Some Where in the World</Typography>
                 </Box>
                 <Box
                   sx={{
                     width: "80%",
                     height: "20%",
-                    backgroundColor: "#f0f0f0",
+                    backgroundColor: theme.palette.background.default,
                     display: "flex",
                     flexDirection: "column",
                     gap: 2,
@@ -369,7 +366,7 @@ function Contact() {
                     <TwitterIcon />
                     <LinkedInIcon />
                   </Grid>
-                  <Typography>Social Profiles</Typography>
+                  <Typography variant="body1">Social Profiles</Typography>
                 </Box>
               </Box>
             </Box>

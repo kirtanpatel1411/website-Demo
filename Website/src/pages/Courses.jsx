@@ -10,6 +10,7 @@ import { fetchCourses } from "../redux/CoursesSlice";
 import Grid from "@mui/material/Grid";
 import { selectCourse } from "../redux/CoursesSlice";
 import Container from "@mui/material/Container";
+import theme from "../theme/theme";
 
 function Courses() {
   const dispatch = useDispatch();
@@ -19,20 +20,23 @@ function Courses() {
   useEffect(() => {
     dispatch(fetchCourses());
   }, [dispatch]);
+
+  const courseClick = (course) => {
+    dispatch(selectCourse(course));
+    navigate(`/CoursesShow/${course.id}`);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       <Header />
       <Container
         maxWidth="xl"
         sx={{
-          backgroundColor: "#f0f0f0",
+          backgroundColor: theme.palette.background.default,
         }}
       >
         <Grid
-          xs={12}
-          sm={6}
-          md={4}
-          lg={3}
           container
           spacing={5}
           sx={{
@@ -53,7 +57,7 @@ function Courses() {
             }}
           >
             <Grid item xs={12} md={6}>
-              <Typography variant="h3" component="h2" fontWeight="bold">
+              <Typography variant="h3">
                 Online Courses on <br /> Design and Development
               </Typography>
             </Grid>
@@ -61,7 +65,7 @@ function Courses() {
             <Grid item xs={12} md={6}>
               <Typography
                 variant="body1"
-                sx={{ color: "#555", lineHeight: 1.8 }}
+                sx={{ lineHeight: 1.8 }}
               >
                 Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam
                 eget elit id imperdiet et. Cras eu sit dignissim lorem nibh et.
@@ -72,18 +76,18 @@ function Courses() {
             </Grid>
           </Grid>
 
-          <Divider color="#000" sx={{ width: "100%", height: 1 }} />
+          <Divider color={theme.palette.fontcolor.main} sx={{ width: "100%", height: 1 }} />
           {loading
             ? "Loading..."
             : error
             ? error
             : Courses.map((course, index) => (
                 <Grid
-                  key={index}
+                  key={course.id}
                   container
                   spacing={3}
                   sx={{
-                    backgroundColor: "#fff",
+                    backgroundColor:  theme.palette.background.main,
                     width: "100%",
                     height: "auto",
                     borderRadius: 3,
@@ -104,7 +108,7 @@ function Courses() {
                   >
                     <Grid container item xs={12} sx={{ width: "80%" }}>
                       <Grid item xs={12} sx={{}}>
-                        <Typography variant="h4">{course.coursname}</Typography>
+                        <Typography variant="h4" >{course.coursname}</Typography>
 
                         <Typography variant="body1">
                           {course.description}
@@ -122,14 +126,12 @@ function Courses() {
                         }}
                       >
                         <Button
-                          variant="outlined"
-                          onClick={() => {
-                            dispatch (selectCourse(course));
-                            navigate("/CoursesShow");
-                          }}
+                        className="orange"
+                          variant="contained"
+                          onClick={() => courseClick(course)}
                           sx={{
                             color: "#fff",
-                            backgroundColor: "#ff9500",
+                            backgroundColor: theme.palette.primary.main,
                             border: "none",
                           }}
                         >
@@ -145,9 +147,8 @@ function Courses() {
                         display: "flex",
                         justifyContent: "center",
                         gap: 2,
-                        // justifyContent: "space-between",
+
                         width: "100%",
-                        // p : 2
                       }}
                     >
                       <Grid item xs={12}>
@@ -198,6 +199,7 @@ function Courses() {
                         <Grid item xs={12}>
                           <Chip
                             sx={{
+                              
                               borderRadius: 2,
                               p: 2,
                             }}
@@ -218,7 +220,7 @@ function Courses() {
                       </Grid>
                       <Grid container item xs={12}>
                         <Grid item xs={12}>
-                          <Typography variant="h6">{course.name}</Typography>
+                          <Typography variant="h5" >{course.name}</Typography>
                         </Grid>
                       </Grid>
                     </Grid>
@@ -231,7 +233,7 @@ function Courses() {
                       }}
                     >
                       <Grid item xs={12}>
-                        <Typography variant="h6">Curriculum</Typography>
+                        <Typography variant="h6" color={theme.palette.fontcolor.main}>Curriculum</Typography>
                       </Grid>
                     </Grid>
                     <Grid
@@ -246,9 +248,8 @@ function Courses() {
                       }}
                     >
                       {course.number.map((topic) => (
-                        <>
+                        <React.Fragment key={topic.id}>
                           <Grid
-                            key={topic.id}
                             container
                             item
                             xs={12}
@@ -261,17 +262,17 @@ function Courses() {
                             }}
                           >
                             <Grid item xs={12}>
-                              <Typography variant="h3">{topic.id}</Typography>
+                              <Typography variant="h3" >{topic.id}</Typography>
                             </Grid>
                             <Grid item xs={12}>
-                              <Typography variant="body1">
+                              <Typography variant="body1" >
                                 {topic.text}
                               </Typography>
                             </Grid>
                           </Grid>
 
                           <Divider orientation="vertical" flexItem />
-                        </>
+                        </React.Fragment>
                       ))}
                     </Grid>
                   </Grid>

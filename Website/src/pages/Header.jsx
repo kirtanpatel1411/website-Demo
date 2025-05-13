@@ -1,4 +1,5 @@
-import React from "react";
+// import React from "react";
+import theme from "../theme/theme";
 import {
   AppBar,
   Toolbar,
@@ -11,6 +12,7 @@ import {
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useNavigate } from "react-router";
+import logo from "../assets/Logo.png";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -20,10 +22,9 @@ export default function Header() {
 
   return (
     <Box>
-
       <Box
         sx={{
-          backgroundColor: "#FF9500",
+          backgroundColor: theme.palette.primary.main,
           color: "white",
           textAlign: "center",
           borderRadius: "5px",
@@ -34,23 +35,24 @@ export default function Header() {
           alignItems: "center",
         }}
       >
-        <Typography variant="body1" sx={{ mr: 1 }}>
+        <Typography variant="body2" sx={{ mr: 1 }}>
           Free Courses 🌟 Sale Ends Soon, Get It Now
         </Typography>
         <ArrowForwardIcon fontSize="small" />
       </Box>
 
-     
       <AppBar
         position="static"
-        sx={{ backgroundColor: "#f0f0f0", boxShadow: "none" }}
+        sx={{
+          backgroundColor: theme.palette.background.default,
+          boxShadow: "none",
+        }}
       >
         <Toolbar sx={{ justifyContent: "space-between" }}>
-         
           <Stack direction="row" alignItems="center" spacing={2}>
             <Box
               component="img"
-              src="https://dummyimage.com/32x32/ffa000/ffffff&text=S" 
+              src={logo}
               alt="logo"
               sx={{ width: 40, height: 40, borderRadius: 1 }}
             />
@@ -66,15 +68,17 @@ export default function Header() {
                 className="active ? 'active' : ''"
                 key={item.label}
                 onClick={() => handleNavigation(item.path)}
-           
                 sx={{
-                  color: location.pathname === item.path ? "#000" : "#555",
+                  color:
+                    location.pathname === item.path
+                      ? theme.palette.fontcolor.dark
+                      : theme.palette.fontcolor.main,
                   textTransform: "none",
                   fontWeight:
                     location.pathname === item.path ? "bold" : "normal",
                   borderBottom:
                     location.pathname === item.path
-                      ? "2px solid #ff9500"
+                      ? `2px solid ${theme.palette.primary.main}`
                       : "none",
                   borderRadius: 0,
                 }}
@@ -84,19 +88,21 @@ export default function Header() {
             ))}
           </Stack>
 
-   
           <Stack direction="row" alignItems="center" spacing={2}>
-            <Button sx={{ color: "#555" }}>Sign Up</Button>
             <Button
+              className="white"
+              variant="outlined"
+              onClick={() => {
+                navigate("/SignUp");
+              }}
+            >
+              Sign Up
+            </Button>
+            <Button
+              className="orange"
               variant="contained"
-              sx={{
-                backgroundColor: "#FFA000",
-                color: "white",
-                textTransform: "none",
-                borderRadius: "8px",
-                px: 3,
-                py: 1,
-                fontWeight: 500,
+              onClick={() => {
+                navigate("/Login");
               }}
             >
               Login
