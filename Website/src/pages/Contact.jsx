@@ -1,4 +1,5 @@
-import React from "react";
+import { useTheme } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import Header from "./Header";
 import Footer from "./Footer";
 import MailIcon from "@mui/icons-material/Mail";
@@ -7,39 +8,29 @@ import PlaceIcon from "@mui/icons-material/Place";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import {
-  Typography,
-  Button,
-  Divider,
-  Box,
-  TextField,
-  Avatar,
-} from "@mui/material";
-
+import { Typography, Button, Divider, Box, TextField } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import theme from "../theme/theme";
 
 function Contact() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTab = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
       <Header />
       <Container
-        maxWidth="xl"
+        maxWidth={isMobile ? "sm" : isTab ? "md" : "xl"}
         sx={{
           backgroundColor: theme.palette.background.default,
         }}
       >
         <Grid
-          xs={12}
-          sm={6}
-          md={4}
-          lg={3}
           container
           spacing={5}
           sx={{
             width: "100%",
-            p: 4,
+            p: isMobile ? 1 : 4,
           }}
         >
           <Grid
@@ -49,21 +40,20 @@ function Contact() {
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-between",
-              px: 2, 
-              py: 2, 
+              px: isMobile ? 0 : 2,
+              py: isMobile ? 0 : 2,
             }}
           >
-           <Grid item xs={12} md={6}>
-              <Typography variant="h3" >
+            <Grid>
+              <Typography variant={isMobile ? "h4" : "h3"}>
                 Contact Us
               </Typography>
             </Grid>
 
-           
-            <Grid item xs={12} md={6}>
+            <Grid>
               <Typography
-                variant="body1"
-                sx={{lineHeight: 1.8 }}
+                variant={isMobile ? "body2" : "body1"}
+                sx={{ lineHeight: 1.8 }}
               >
                 Welcome to SkillBridge's Pricing Plan page, where we offer two
                 comprehensive options to cater to your needs: Free and Pro. We
@@ -91,11 +81,11 @@ function Contact() {
             <Box
               sx={{
                 display: "flex",
-                flexDirection: "row",
+                flexDirection: isMobile ? "column" : "row",
                 justifyContent: "flex-start",
                 borderRadius: 3,
                 width: "100%",
-                backgroundColor:  theme.palette.background.main,
+                backgroundColor: theme.palette.background.main,
               }}
             >
               <Box
@@ -103,33 +93,32 @@ function Contact() {
                   display: "flex",
                   flexDirection: "column",
                   borderRadius: 3,
-                  gap: 4,
-                  width: "70%",
+                  gap: isMobile ? 1 : 4,
+                  width: isMobile ? "100%" : "70%",
                   height: "auto",
-                  padding: 5,
+                  padding: isMobile ? 2 : 5,
                 }}
               >
                 <Grid
                   container
-                  item
-                  xs={12}
                   spacing={4}
                   sx={{
                     width: "100%",
                     display: "flex",
-                    flexDirection: "row",
+                    flexDirection: isMobile ? "column" : "row",
                     justifyContent: "center",
                   }}
                 >
                   <Grid
-                    item
-                    xs={6}
-                    md={6}
                     sx={{
-                      width: "40%",
+                      width: isMobile ? "100%" : "40%",
                     }}
                   >
-                    <Typography variant="body1" mb={1} color={theme.palette.fontcolor.main}>
+                    <Typography
+                      variant="body1"
+                      mb={1}
+                      color={theme.palette.fontcolor.main}
+                    >
                       First Name
                     </Typography>
                     <TextField
@@ -140,14 +129,15 @@ function Contact() {
                     />
                   </Grid>
                   <Grid
-                    item
-                    xs={6}
-                    md={6}
                     sx={{
-                      width: "40%",
+                      width: isMobile ? "100%" : "40%",
                     }}
                   >
-                    <Typography variant="body1" mb={1} color={theme.palette.fontcolor.main}>
+                    <Typography
+                      variant="body1"
+                      mb={1}
+                      color={theme.palette.fontcolor.main}
+                    >
                       Last Name
                     </Typography>
                     <TextField
@@ -160,26 +150,24 @@ function Contact() {
                 </Grid>
                 <Grid
                   container
-                  item
-                  xs={12}
                   spacing={4}
                   sx={{
                     width: "100%",
                     display: "flex",
-                    flexDirection: "row",
+                    flexDirection: isMobile ? "column" : "row",
                     justifyContent: "center",
                   }}
                 >
-               
                   <Grid
-                    item
-                    xs={12}
-                    md={6}
                     sx={{
-                      width: "40%",
+                      width: isMobile ? "100%" : "40%",
                     }}
                   >
-                    <Typography variant="body1" mb={1} color={theme.palette.fontcolor.main}>
+                    <Typography
+                      variant="body1"
+                      mb={1}
+                      color={theme.palette.fontcolor.main}
+                    >
                       Email
                     </Typography>
                     <TextField
@@ -190,14 +178,16 @@ function Contact() {
                     />
                   </Grid>
                   <Grid
-                    item
-                    xs={12}
-                    md={6}
+                    
                     sx={{
-                      width: "40%",
+                      width: isMobile ? "100%" : "40%",
                     }}
                   >
-                    <Typography variant="body1" mb={1} color={theme.palette.fontcolor.main}>
+                    <Typography
+                      variant="body1"
+                      mb={1}
+                      color={theme.palette.fontcolor.main}
+                    >
                       Phone
                     </Typography>
                     <TextField
@@ -210,23 +200,22 @@ function Contact() {
                 </Grid>
                 <Grid
                   container
-                  item
-                  xs={12}
                   sx={{
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
                   }}
                 >
-          
                   <Grid
-                    item
-                    xs={12}
                     sx={{
-                      width: "84%",
+                      width: isMobile ? "100%" : "84%",
                     }}
                   >
-                    <Typography variant="body1" mb={1} color={theme.palette.fontcolor.main}>
+                    <Typography
+                      variant="body1"
+                      mb={1}
+                      color={theme.palette.fontcolor.main}
+                    >
                       Subject
                     </Typography>
                     <TextField
@@ -239,22 +228,21 @@ function Contact() {
                 </Grid>
                 <Grid
                   container
-                  item
-                  xs={12}
                   sx={{
                     display: "flex",
                     justifyContent: "center",
                   }}
                 >
-            
                   <Grid
-                    item
-                    xs={12}
                     sx={{
-                      width: "84%",
+                      width: isMobile ? "100%" : "84%",
                     }}
                   >
-                    <Typography variant="body1" mb={1} color={theme.palette.fontcolor.main}>
+                    <Typography
+                      variant="body1"
+                      mb={1}
+                      color={theme.palette.fontcolor.main}
+                    >
                       Message
                     </Typography>
                     <TextField
@@ -270,19 +258,22 @@ function Contact() {
 
                 <Grid
                   container
-                  item
-                  xs={12}
                   sx={{
                     display: "flex",
                     justifyContent: "center",
                   }}
                 >
-           
-                  <Grid item xs={12} textAlign="center">
+                  <Grid
+                    textAlign="center"
+                    sx={{
+                      width: isMobile ? "100%" : "40%",
+                    }}
+                  >
                     <Button
-                    className="orange"
+                      className="orange"
                       variant="contained"
                       sx={{
+                        width: "100%",
                         borderRadius: 2,
                         paddingX: 4,
                         paddingY: 1.2,
@@ -296,7 +287,7 @@ function Contact() {
               </Box>
               <Box
                 sx={{
-                  width: "30%",
+                  width: isMobile ? "100%" : "30%",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
@@ -308,6 +299,7 @@ function Contact() {
                   sx={{
                     width: "80%",
                     height: "20%",
+                    p: isMobile ? 5 : "",
                     backgroundColor: theme.palette.background.default,
                     display: "flex",
                     flexDirection: "column",
@@ -317,12 +309,15 @@ function Contact() {
                   }}
                 >
                   <MailIcon />
-                  <Typography variant="body1">support@skillbridge.com</Typography>
+                  <Typography variant="body1">
+                    support@skillbridge.com
+                  </Typography>
                 </Box>
                 <Box
                   sx={{
                     width: "80%",
                     height: "20%",
+                    p: isMobile ? 5 : "",
                     backgroundColor: theme.palette.background.default,
                     display: "flex",
                     flexDirection: "column",
@@ -338,6 +333,7 @@ function Contact() {
                   sx={{
                     width: "80%",
                     height: "20%",
+                    p: isMobile ? 5 : "",
                     backgroundColor: theme.palette.background.default,
                     display: "flex",
                     flexDirection: "column",
@@ -347,12 +343,15 @@ function Contact() {
                   }}
                 >
                   <PlaceIcon />
-                  <Typography variant="body1">Some Where in the World</Typography>
+                  <Typography variant="body1">
+                    Some Where in the World
+                  </Typography>
                 </Box>
                 <Box
                   sx={{
                     width: "80%",
                     height: "20%",
+                    p: isMobile ? 5 : "",
                     backgroundColor: theme.palette.background.default,
                     display: "flex",
                     flexDirection: "column",

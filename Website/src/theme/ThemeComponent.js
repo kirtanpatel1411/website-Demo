@@ -1,13 +1,16 @@
 export const MuiButton = {
+ 
   styleOverrides: {
     root: {
-      padding: "10px 20px",
+      // padding: "10px 20px",
       cursor: "pointer",
+      fontFamily: "cursive",
       transition: "background-color 0.3s ease",
     },
   },
   variants: [
     {
+      
       props: { variant: "contained" },
       style: ({ theme, ownerState }) => ({
         "&.orange": {
@@ -60,7 +63,7 @@ export const MuiButton = {
 export const MuiTypography = {
   styleOverrides: {
     root: {
-      fontFamily: "Poppins, Roboto, sans-serif",
+      fontFamily: "cursive",
     },
   },
   variants: [
@@ -72,14 +75,14 @@ export const MuiTypography = {
         color: "#191919",
       },
     },
-    // {
-    //   props: { variant: "h2" },
-    //   style: {
-    //     fontSize: "2.5rem",
-    //     fontWeight: 600,
-    //     color: "#333",
-    //   },
-    // },
+    {
+      props: { variant: "h2" },
+      style: {
+        fontSize: "60px",
+        fontWeight: 600,
+        color: "#191919",
+      },
+    },
     {
       props: { variant: "h3" },
       style: {
@@ -100,6 +103,14 @@ export const MuiTypography = {
       props: { variant: "h5" },
       style: {
         fontSize: "25px",
+        fontWeight: 400,
+        color: "#191919",
+      },
+    },
+    {
+      props: { variant: "h6" },
+      style: {
+        fontSize: "20px",
         fontWeight: 500,
         color: "#191919",
       },
@@ -112,10 +123,10 @@ export const MuiTypography = {
       },
     },
     {
-      props: { variant: "caption" },
+      props: { variant: "body2" },
       style: {
-        fontSize: "0.8rem",
-        color: "#999",
+        fontSize: "15px",
+        color: "#59595A",
       },
     },
   ],

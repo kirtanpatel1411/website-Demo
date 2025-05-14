@@ -121,6 +121,26 @@ export const fetchCourses = createAsyncThunk(
                 { id: "05", text: "Introduction to Bootstrap and React" },
               ],
             },
+            {
+              id: "6",
+              coursname: "Advanced JavaScript",
+              description:
+                "Take your JavaScript skills to the next level. Explore advanced concepts like closures, prototypes, asynchronous programming, and ES6 features. Build complex applications with confidence.",
+              img1: img15,
+              img2: img16,
+              img3: img17,
+
+              week: "8 weeks",
+              level: "Intermediate",
+              name: "By Jennifer Wilson",
+              number: [
+                { id: "01", text: "HTML Fundamentals" },
+                { id: "02", text: "CSS Styling and Layouts" },
+                { id: "03", text: "JavaScript Basics" },
+                { id: "04", text: "Building Responsive Websites" },
+                { id: "05", text: "Introduction to Bootstrap and React" },
+              ],
+            },
           ]),
         1000
       )

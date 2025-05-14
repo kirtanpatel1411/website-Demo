@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Typography, Button, Divider, Avatar } from "@mui/material";
@@ -11,13 +10,16 @@ import icon6 from "../assets/icon6.png";
 import icon7 from "../assets/icon7.png";
 import icon8 from "../assets/icon8.png";
 import Box from "@mui/material/Box";
-import theme from "../theme/theme";
-
+import { useTheme } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Card from "@mui/material/Card";
 
 function AboutUs() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTab = useMediaQuery(theme.breakpoints.down("md"));
   const Achievements = [
     {
       image: icon1,
@@ -74,7 +76,7 @@ function AboutUs() {
     <>
       <Header />
       <Container
-        maxWidth="xl"
+        maxWidth={isMobile ? "sm" : isTab ? "md" : "xl"}
         sx={{
           backgroundColor: theme.palette.background.default,
         }}
@@ -84,7 +86,7 @@ function AboutUs() {
           spacing={5}
           sx={{
             width: "100%",
-            p: 4,
+            p: isMobile ? 1 : 4,
           }}
         >
           <Grid
@@ -94,25 +96,20 @@ function AboutUs() {
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-between",
-              px: 2,
-              py: 2,
+              px: isMobile ? 0 : 2,
+              py: isMobile ? 0 : 2,
             }}
           >
-            <Grid item xs={12} md={6}>
-              <Typography
-                variant="h3"
-                // component="h2"
-                // color={theme.palette.fontcolor.dark}
-                // fontWeight="bold"
-              >
+            <Grid>
+              <Typography variant={isMobile ? "h4" : "h3"}>
                 About Skillbridge
               </Typography>
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid>
               <Typography
-                variant="body1"
-                sx={{ color:theme.palette.fontcolor.light, lineHeight: 1.8 }}
+                variant={isMobile ? "body2" : "body1"}
+                sx={{ lineHeight: 1.8 }}
               >
                 Welcome to our platform, where we are passionate about
                 empowering individuals to master the world of design and
@@ -129,19 +126,17 @@ function AboutUs() {
           />
           <Grid container spacing={3}>
             <Grid
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
               container
               spacing={3}
               sx={{
                 width: "100%",
               }}
             >
-              <Grid xs={12} sm={6} md={4} lg={3}>
-                <Typography variant="h4" color={theme.palette.fontcolor.main}>Achievements</Typography>
-                <Typography variant="body1" color={theme.palette.fontcolor.light}>
+              <Grid>
+                <Typography variant={isMobile ? "h5" : "h4"}>
+                  Achievements
+                </Typography>
+                <Typography variant={isMobile ? "body2" : "body1"}>
                   Our commitment to excellence has led us to achieve significant
                   milestones along our journey. Here are some of our notable
                   milestones along our journey. Here are some of our notable
@@ -163,13 +158,9 @@ function AboutUs() {
               {Achievements.map((item) => (
                 <Grid
                   key={item.id}
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  lg={3}
                   sx={{
-                    width: "680px",
-                    height: "280px",
+                    width: isMobile ? "100%" : "680px",
+                    height: isMobile ? "auto" : "280px",
                   }}
                 >
                   <Card
@@ -177,8 +168,8 @@ function AboutUs() {
                       width: "100%",
                       height: "100%",
                       display: "flex",
-                      padding: 5,
-                      borderRadius: 4,
+                      padding: isMobile ? 2 : 5,
+                      borderRadius: 3,
                     }}
                   >
                     <Grid
@@ -191,7 +182,7 @@ function AboutUs() {
                         gap: 2,
                       }}
                     >
-                      <Grid item xs={12}>
+                      <Grid>
                         <Avatar
                           src={item.image}
                           sx={{
@@ -200,11 +191,13 @@ function AboutUs() {
                           }}
                         />
                       </Grid>
-                      <Grid item xs={12}>
-                        <Typography variant="h5">{item.title}</Typography>
+                      <Grid>
+                        <Typography variant={isMobile ? "h6" : "h5"}>
+                          {item.title}
+                        </Typography>
                       </Grid>
-                      <Grid item xs={12}>
-                        <Typography variant="body1" >
+                      <Grid>
+                        <Typography variant={isMobile ? "body2" : "body1"}>
                           {item.description}
                         </Typography>
                       </Grid>
@@ -222,9 +215,11 @@ function AboutUs() {
                 width: "100%",
               }}
             >
-              <Grid xs={12} sm={6} md={4} lg={3}>
-                <Typography variant="h4">Our Goals</Typography>
-                <Typography variant="body1">
+              <Grid>
+                <Typography variant={isMobile ? "h5" : "h4"}>
+                  Our Goals
+                </Typography>
+                <Typography variant={isMobile ? "body2" : "body1"}>
                   At SkillBridge, our goal is to empower individuals from all
                   backgrounds to thrive in the world of design and development.
                   We believe that education should be accessible and
@@ -246,13 +241,9 @@ function AboutUs() {
               {Goals.map((item) => (
                 <Grid
                   key={item.id}
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  lg={3}
                   sx={{
-                    width: "680px",
-                    height: "280px",
+                    width: isMobile ? "100%" : "680px",
+                    height: isMobile ? "auto" : "280px",
                   }}
                 >
                   <Card
@@ -260,13 +251,13 @@ function AboutUs() {
                       width: "100%",
                       height: "100%",
                       display: "flex",
-                      padding: 5,
-                      borderRadius: 4,
+                      padding: isMobile ? 2 : 5,
+                      borderRadius: 3,
                     }}
                   >
                     <Grid
                       container
-                      spacing={1}
+                      spacing={2}
                       sx={{
                         display: "flex",
                         flexDirection: "column",
@@ -274,20 +265,22 @@ function AboutUs() {
                         gap: 2,
                       }}
                     >
-                      <Grid item xs={12}>
+                      <Grid>
                         <Avatar
                           src={item.image}
                           sx={{
                             borderRadius: 1,
-                            border: ` 1px solid ${theme.palette.primary.main}`,
+                            border: `1px solid ${theme.palette.primary.main}`,
                           }}
                         />
                       </Grid>
-                      <Grid item xs={12}>
-                        <Typography variant="h5">{item.title}</Typography>
+                      <Grid>
+                        <Typography variant={isMobile ? "h6" : "h5"}>
+                          {item.title}
+                        </Typography>
                       </Grid>
-                      <Grid item xs={12}>
-                        <Typography variant="body1">
+                      <Grid>
+                        <Typography variant={isMobile ? "body2" : "body1"}>
                           {item.description}
                         </Typography>
                       </Grid>
@@ -308,22 +301,23 @@ function AboutUs() {
             }}
           >
             <Grid container alignItems="center" justifyContent="space-between">
-              <Grid item xs={12} md={8} zIndex={1}>
-                <Typography variant="h4" fontWeight="bold" gutterBottom >
+              <Grid zIndex={1}>
+                <Typography
+                  variant={isMobile ? "h5" : "h4"}
+                  fontWeight="bold"
+                  gutterBottom
+                >
                   <span style={{ color: `${theme.palette.primary.main}` }}>
                     Together
                   </span>
                   , let’s shape the future of digital innovation
                 </Typography>
-                <Typography variant="body1" >
+                <Typography variant={isMobile ? "body2" : "body1"}>
                   Join us on this exciting learning journey and unlock your
                   potential in design and development.
                 </Typography>
               </Grid>
               <Grid
-                item
-                xs={12}
-                md={4}
                 container
                 justifyContent={{ xs: "flex-start", md: "flex-end" }}
                 alignItems="center"

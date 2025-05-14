@@ -1,16 +1,20 @@
-import React, { useEffect } from "react";
-import theme from "../theme/theme";
+import { useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import { Typography, Button, Divider, Box, Card, Chip } from "@mui/material";
+import { Typography, Button, Divider, Box } from "@mui/material";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCourses, selectCourse } from "../redux/CoursesSlice";
 import { useParams } from "react-router";
+import { useTheme } from "@emotion/react";
+import { useMediaQuery } from "@mui/material";
 
 function CoursesShow() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTab = useMediaQuery(theme.breakpoints.down("md"));
   const Course = useSelector((state) => state.Courses.SelectedCourse);
   const Allcourses = useSelector((state) => state.Courses.Courses.Courses);
   const dispatch = useDispatch();
@@ -34,7 +38,7 @@ function CoursesShow() {
     <>
       <Header />
       <Container
-        maxWidth="xl"
+        maxWidth={isMobile ? "sm" : isTab ? "md" : "xl"}
         sx={{
           backgroundColor: theme.palette.background.default,
         }}
@@ -46,7 +50,7 @@ function CoursesShow() {
             spacing={5}
             sx={{
               width: "100%",
-              p: 4,
+              p: isMobile ? 1 : 4,
             }}
           >
             <Grid
@@ -57,19 +61,19 @@ function CoursesShow() {
                 flexDirection: "column",
 
                 justifyContent: "space-between",
-                px: 2,
-                py: 2,
+                px: isMobile ? "" : 2,
+                py: isMobile ? "" : 2,
               }}
             >
-              <Grid item xs={12} md={6}>
-                <Typography variant="h3" >
+              <Grid>
+                <Typography variant={isMobile ? "h4" : "h3"}>
                   {Course.coursname}
                 </Typography>
               </Grid>
 
-              <Grid item xs={12} md={6}>
+              <Grid>
                 <Typography
-                  variant="body1"
+                  variant={isMobile ? "body2" : "body1"}
                   sx={{ lineHeight: 1.8 }}
                 >
                   {Course.description}
@@ -77,7 +81,10 @@ function CoursesShow() {
               </Grid>
             </Grid>
 
-            <Divider color={theme.palette.fontcolor.main} sx={{ width: "100%", height: 1 }} />
+            <Divider
+              color={theme.palette.fontcolor.main}
+              sx={{ width: "100%", height: 1 }}
+            />
 
             <Grid
               container
@@ -89,11 +96,9 @@ function CoursesShow() {
               }}
             >
               <Grid
-                item
-                xs={12}
                 sx={{
-                  width: "90%",
-                  height: "700px",
+                  width: isMobile ? "100%" : "90%",
+                  height: isMobile ? "200px" : "700px",
                 }}
               >
                 <img
@@ -102,7 +107,7 @@ function CoursesShow() {
                   style={{
                     width: "100%",
                     height: "100%",
-                    borderRadius: "10px",
+                    borderRadius: "5px",
                   }}
                 />
               </Grid>
@@ -114,7 +119,7 @@ function CoursesShow() {
                 width: "100%",
                 display: "flex",
                 justifyContent: "flex-start",
-                ml: 2,
+                ml: isMobile ? "" : 10,
                 flexDirection: "row",
               }}
             >
@@ -125,29 +130,27 @@ function CoursesShow() {
                   key={topic.id}
                   sx={{
                     width: "600px",
-                    height: "auto",
-                    backgroundColor:  theme.palette.background.main,
-                    p: 4,
+                    height: "700px",
+                    backgroundColor: theme.palette.background.main,
+                    p: isMobile ? 1 : 4,
                   }}
                 >
                   <Grid
                     container
                     spacing={3}
                     sx={{
-                      mb: 4,
+                      mb: isMobile ? 0 : 4,
                     }}
                   >
                     <Grid
-                      item
-                      xs={12}
                       sx={{
                         width: "100%",
                         display: "flex",
                         justifyContent: "flex-end",
                       }}
                     >
-                      <Typography 
-                        variant="h1"
+                      <Typography
+                        variant={isMobile ? "h3" : "h1"}
                         sx={{
                           fontWeight: "bold",
                         }}
@@ -155,11 +158,11 @@ function CoursesShow() {
                         {topic.id}
                       </Typography>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid>
                       <Typography variant="h5">{topic.text}</Typography>
                     </Grid>
                   </Grid>
-                  <Grid container spacing={2}>
+                  <Grid container spacing={8}>
                     <Box
                       sx={{
                         width: "100%",
@@ -180,31 +183,23 @@ function CoursesShow() {
                         }}
                       >
                         <Grid
-                          item
-                          xs={12}
                           sx={{
                             display: "flex",
                             flexDirection: "column",
                             justifyContent: "center",
                           }}
                         >
-                          <Typography variant="h6" >{topic.text}</Typography>
-                          <Typography variant="body1" >Lesson 01</Typography>
+                          <Typography variant="h6">{topic.text}</Typography>
+                          <Typography variant="body1">Lesson 01</Typography>
                         </Grid>
                         <Grid
-                          item
-                          xs={12}
                           sx={{
                             display: "flex",
                             justifyContent: "flex-end",
                             alignItems: "center",
                           }}
                         >
-                          <Button
-                          className="white"
-                            variant="outlined"
-                     
-                          >
+                          <Button className="white" variant="outlined">
                             <AccessTimeIcon />1 hour
                           </Button>
                         </Grid>
@@ -230,83 +225,72 @@ function CoursesShow() {
                         }}
                       >
                         <Grid
-                          item
-                          xs={12}
                           sx={{
                             display: "flex",
                             flexDirection: "column",
                             justifyContent: "center",
                           }}
                         >
-                          <Typography variant="h6" >
-                            Understanding UI/UX Design Principles
-                          </Typography>
-                          <Typography variant="body1" >Lesson 01</Typography>
-                        </Grid>
-                        <Grid
-                          item
-                          xs={12}
-                          sx={{
-                            display: "flex",
-                            justifyContent: "flex-end",
-                            alignItems: "center",
-                          }}
-                        >
-                          <Button
-                          className="white"
-                            variant="outlined"
-                
-                          >
-                            <AccessTimeIcon />1 hour
-                          </Button>
-                        </Grid>
-                      </Grid>
-                    </Box>
-                    <Box
-                      sx={{
-                        width: "100%",
-                        height: "100px",
-                        border: `1px solid ${theme.palette.background.default}`,
-                        borderRadius: "10px",
-                        p: 2,
-                      }}
-                    >
-                      <Grid
-                        container
-                        spacing={3}
-                        sx={{
-                          width: "100%",
-                          height: "100%",
-                          display: "flex",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <Grid
-                          item
-                          xs={12}
-                          sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "center",
-                          }}
-                        >
-                          <Typography variant="h6" color={theme.palette.fontcolor.main}>
+                          <Typography variant="h6">
                             Understanding UI/UX Design Principles
                           </Typography>
                           <Typography variant="body1">Lesson 01</Typography>
                         </Grid>
                         <Grid
-                          item
-                          xs={12}
                           sx={{
                             display: "flex",
                             justifyContent: "flex-end",
                             alignItems: "center",
                           }}
                         >
-                          <Button
-                          className="white"
-                            variant="outlined">
+                          <Button className="white" variant="outlined">
+                            <AccessTimeIcon />1 hour
+                          </Button>
+                        </Grid>
+                      </Grid>
+                    </Box>
+                    <Box
+                      sx={{
+                        width: "100%",
+                        height: "100px",
+                        border: `1px solid ${theme.palette.background.default}`,
+                        borderRadius: "10px",
+                        p: 2,
+                      }}
+                    >
+                      <Grid
+                        container
+                        spacing={3}
+                        sx={{
+                          width: "100%",
+                          height: "100%",
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <Grid
+                          sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <Typography
+                            variant="h6"
+                            color={theme.palette.fontcolor.main}
+                          >
+                            Understanding UI/UX Design Principles
+                          </Typography>
+                          <Typography variant="body1">Lesson 01</Typography>
+                        </Grid>
+                        <Grid
+                          sx={{
+                            display: "flex",
+                            justifyContent: "flex-end",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Button className="white" variant="outlined">
                             <AccessTimeIcon />1 hour
                           </Button>
                         </Grid>
@@ -315,8 +299,6 @@ function CoursesShow() {
                   </Grid>
                 </Box>
               ))}
-
-              {/**BOX2 */}
             </Grid>
           </Grid>
         ) : (

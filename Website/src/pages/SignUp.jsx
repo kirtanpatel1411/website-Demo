@@ -19,17 +19,21 @@ import {
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import GoogleIcon from "@mui/icons-material/Google";
-
+import { useTheme } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import { Avatar, Button } from "@mui/material";
 import Footer from "./Footer";
 
 function SignUp() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTab = useMediaQuery(theme.breakpoints.down("md"));
   const [showPassword, setShowPassword] = useState(false);
   return (
     <>
       <Header />
       <Container
-        maxWidth="xl"
+        maxWidth={isMobile ? "sm" : isTab ? "md" : "xl"}
         sx={{
           backgroundColor: theme.palette.background.default,
         }}
@@ -38,34 +42,41 @@ function SignUp() {
           container
           spacing={2}
           sx={{
-            padding: 2,
+            padding: isMobile ? 0 : 2,
             width: "100%",
           }}
         >
           <Grid
             container
-            spacing={0}
+            spacing={5}
             sx={{
-              padding: 5,
+              padding: isMobile ? 1 : 5,
               display: "flex",
+              flexDirection: isMobile
+                ? "column-reverse"
+                : isTab
+                ? "column-reverse"
+                : "row",
+
               justifyContent: "center",
-              gap: 10,
+              gap: isMobile ? 0 : 10,
               width: "100%",
             }}
           >
             <Grid
+              spacing={5}
               container
-              item
-              xs={12}
               sx={{
-                width: "50%",
+                width: isMobile ? "100%" : isTab ? "100%" : "50%",
                 display: "flex",
                 alignItems: "end",
               }}
             >
-              <Grid item xs={12}>
-                <Typography variant="h4"  color={theme.palette.fontcolor.dark}>Students Testimonials</Typography>
-                <Typography variant="body1"  color={theme.palette.fontcolor.light}>
+              <Grid>
+                <Typography variant={isMobile ? "h4" : "h3"}>
+                  Students Testimonials
+                </Typography>
+                <Typography variant={isMobile ? "body2" : "body1"}>
                   Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam
                   eget elit id imperdiet et. Cras eu sit dignissim lorem nibh
                   et. Ac cum eget habitasse in velit fringilla feugiat senectus
@@ -73,8 +84,6 @@ function SignUp() {
                 </Typography>
               </Grid>
               <Grid
-                item
-                xs={12}
                 sx={{
                   width: "100%",
                 }}
@@ -89,15 +98,15 @@ function SignUp() {
                 >
                   <Grid
                     container
-                    spacing={5}
+                    spacing={isMobile ? 2 : 5}
                     sx={{
                       width: "100%",
                       height: "auto",
-                      p: 3,
+                      p: isMobile ? 1 : 3,
                     }}
                   >
-                    <Grid item xs={12}>
-                      <Typography variant="body1"  color={theme.palette.fontcolor.light}>
+                    <Grid>
+                      <Typography variant={isMobile ? "body2" : "h6"}>
                         The web design course provided a solid foundation for
                         me. The instructors were knowledgeable and supportive,
                         and the interactive learning environment was engaging. I
@@ -110,8 +119,6 @@ function SignUp() {
                       }}
                     />
                     <Grid
-                      item
-                      xs={12}
                       sx={{
                         display: "flex",
                         flexDirection: "row",
@@ -120,8 +127,6 @@ function SignUp() {
                       }}
                     >
                       <Grid
-                        item
-                        xs={6}
                         sx={{
                           display: "flex",
                           flexDirection: "row",
@@ -142,21 +147,18 @@ function SignUp() {
                             }}
                           />
                         </Avatar>
-                        <Typography variant="h5"  color={theme.palette.fontcolor.dark}>kirtan</Typography>
+                        <Typography variant={isMobile ? "h6" : "h5"}>
+                          kirtan
+                        </Typography>
                       </Grid>
-                      <Button
-                      className="Gray"
-                        variant="outlined"
-                      >
-                        Read Full Story
+                      <Button className="Gray" variant="outlined">
+                        Read More
                       </Button>
                     </Grid>
                   </Grid>
                 </Box>
               </Grid>
               <Grid
-                item
-                xs={12}
                 sx={{
                   width: "100%",
                   display: "flex",
@@ -166,7 +168,7 @@ function SignUp() {
                 }}
               >
                 <Button
-                className="white"
+                  className="white"
                   sx={{
                     p: 2,
                   }}
@@ -175,7 +177,7 @@ function SignUp() {
                   <ArrowBackIosNewIcon />
                 </Button>
                 <Button
-                className="white"
+                  className="white"
                   sx={{
                     p: 2,
                   }}
@@ -187,15 +189,11 @@ function SignUp() {
             </Grid>
             <Grid
               container
-              item
-              xs={12}
               sx={{
-                width: "35%",
+                width: isMobile ? "100%" : isTab ? "100%" : "35%",
               }}
             >
               <Grid
-                item
-                xs={12}
                 sx={{
                   width: "100%",
                   display: "flex",
@@ -205,36 +203,33 @@ function SignUp() {
                   sx={{
                     width: "100%",
                     backgroundColor: theme.palette.background.main,
-                    p: 4,
+                    p: isMobile ? 2 : 4,
                     borderRadius: 3,
                   }}
                 >
                   <Grid
                     container
-                    item
-                    xs={12}
                     sx={{
                       width: "100%",
                       display: "flex",
                       flexDirection: "column",
-                      // justifyContent : "center",
                       alignItems: "center",
                     }}
                   >
-                    <Typography variant="h4" fontWeight="bold" gutterBottom  color={theme.palette.fontcolor.dark}>
+                    <Typography variant={isMobile ? "h4" : "h3"} gutterBottom>
                       Sign Up
                     </Typography>
-                    <Typography variant="body1" sx={{ mb: 3, color:theme.palette.fontcolor.light}}>
-                      Create an account to unlock exclusive features.
+                    <Typography variant="body1" sx={{ mb: 3 }}>
+                      Create an account to unlock exclusive features.{" "}
                     </Typography>
                   </Grid>
-
                   <TextField
                     label="Full Name"
                     placeholder="Enter your Name"
                     fullWidth
                     margin="normal"
                   />
+
                   <TextField
                     label="Email"
                     placeholder="Enter your Email"
@@ -268,19 +263,21 @@ function SignUp() {
                     justifyContent="space-between"
                     sx={{ my: 1 }}
                   >
-                    <Typography variant="body2" sx={{ color: theme.palette.fontcolor.light }}>
+                    <Typography
+                      variant="body2"
+                      sx={{ color: theme.palette.fontcolor.light }}
+                    >
                       I agree with Terms of Use and Privacy Policy
                     </Typography>
                   </Grid>
 
                   <Button
-                  variant="contained"
-                  className="orange"
+                    variant="contained"
+                    className="orange"
                     fullWidth
                     sx={{
                       py: 1.5,
                       borderRadius: 2,
-                      fontWeight: "bold",
                       mb: 2,
                     }}
                   >
@@ -290,8 +287,8 @@ function SignUp() {
                   <Divider sx={{ my: 2 }}>OR</Divider>
 
                   <Button
-                  className="Gray"
                     fullWidth
+                    className="Gray"
                     variant="outlined"
                     startIcon={<GoogleIcon />}
                     sx={{
@@ -304,7 +301,11 @@ function SignUp() {
                     Sign Up with Google
                   </Button>
 
-                  <Typography textAlign="center"  color={theme.palette.fontcolor.light}>
+                  <Typography
+                    textAlign="center"
+                    variant="body1"
+                    color={theme.palette.fontcolor.light}
+                  >
                     Already have an account?{" "}
                     <Link
                       href="#"

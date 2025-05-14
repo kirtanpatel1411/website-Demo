@@ -1,5 +1,3 @@
-// import React from "react";
-import theme from "../theme/theme";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -12,25 +10,31 @@ import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import RoomIcon from "@mui/icons-material/Room";
 import logo from "../assets/Logo.png";
+import { useTheme } from "@emotion/react";
+import { useMediaQuery } from "@mui/material";
 
 function Footer() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTab = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
       <Container
-        maxWidth="xl"
+        maxWidth={isMobile ? "sm" : isTab ? "md" : "xl"}
         sx={{
           backgroundColor: theme.palette.background.main,
           height: "auto",
           mt: 4,
-          mb: 4,
+          mb: isMobile ? 0 : 4,
         }}
       >
         <Grid
           container
-          spacing={2}
+          spacing={isMobile ? 1 : 2}
           sx={{
-            padding: "50px",
+            padding: isMobile ? "10px" : "50px",
             display: "flex",
+            gap: isMobile ? "30px" : "",
             justifyContent: "space-between",
             alignItems: "flex-start",
             mt: "50px",
@@ -38,39 +42,38 @@ function Footer() {
         >
           <Grid
             container
-            xs={12}
             sx={{
               display: "flex",
+
               flexDirection: "column",
               alignItems: "flex-start",
               justifyContent: "center",
             }}
           >
-            <Grid item xs={4}>
+            <Grid>
               <img src={logo} alt="" />
             </Grid>
-            <Grid item xs={4}>
-              <Typography  variant="body1"color={theme.palette.fontcolor.main}>
+            <Grid>
+              <Typography variant="body1" color={theme.palette.fontcolor.main}>
                 {" "}
                 <EmailIcon />
                 bhimanikirtan7@gmail.com
               </Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid>
               <Typography variant="body1" color={theme.palette.fontcolor.main}>
                 <PhoneIcon />
                 +91 9714022044
               </Typography>
             </Grid>
-            <Grid item xs={4}>
-              <Typography  variant="body1" color={theme.palette.fontcolor.main}>
+            <Grid>
+              <Typography variant="body1" color={theme.palette.fontcolor.main}>
                 <RoomIcon /> surat
               </Typography>
             </Grid>
           </Grid>
           <Grid
             container
-            xs={12}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -78,29 +81,33 @@ function Footer() {
               justifyContent: "center",
             }}
           >
-            <Grid item xs={4}>
-              <Typography variant="h5" color={theme.palette.fontcolor.dark}>
+            <Grid>
+              <Typography
+                variant="h5"
+                fontWeight={isMobile ? "bold" : ""}
+                color={theme.palette.fontcolor.dark}
+              >
                 Home
               </Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid>
               <Typography variant="body1" color={theme.palette.fontcolor.main}>
                 Benefits
               </Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid>
               <Typography variant="body1" color={theme.palette.fontcolor.main}>
                 Our Courses
               </Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid>
               <Typography variant="body1" color={theme.palette.fontcolor.main}>
                 {" "}
                 Our Testimonials
               </Typography>
             </Grid>
-            <Grid item xs={4}>
-              <Typography  variant="body1"color={theme.palette.fontcolor.main}>
+            <Grid>
+              <Typography variant="body1" color={theme.palette.fontcolor.main}>
                 {" "}
                 Our FAQ
               </Typography>
@@ -108,7 +115,6 @@ function Footer() {
           </Grid>
           <Grid
             container
-            xs={12}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -116,22 +122,35 @@ function Footer() {
               justifyContent: "center",
             }}
           >
-            <Grid item xs={4}>
-              <Typography variant="h5"  color={theme.palette.fontcolor.dark}>About Us</Typography>
+            <Grid>
+              <Typography
+                variant="h5"
+                fontWeight={isMobile ? "bold" : ""}
+                color={theme.palette.fontcolor.dark}
+              >
+                About Us
+              </Typography>
             </Grid>
-            <Grid item xs={4}>
-              <Typography  variant="body1" color={theme.palette.fontcolor.main}> Company</Typography>
+            <Grid>
+              <Typography variant="body1" color={theme.palette.fontcolor.main}>
+                {" "}
+                Company
+              </Typography>
             </Grid>
-            <Grid item xs={4}>
-              <Typography   variant="body1" color={theme.palette.fontcolor.main}>Achievements</Typography>
+            <Grid>
+              <Typography variant="body1" color={theme.palette.fontcolor.main}>
+                Achievements
+              </Typography>
             </Grid>
-            <Grid item xs={4}>
-              <Typography  variant="body1" color={theme.palette.fontcolor.main}> Our Goals</Typography>
+            <Grid>
+              <Typography variant="body1" color={theme.palette.fontcolor.main}>
+                {" "}
+                Our Goals
+              </Typography>
             </Grid>
           </Grid>
           <Grid
             container
-            xs={12}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -139,10 +158,16 @@ function Footer() {
               justifyContent: "center",
             }}
           >
-            <Grid item xs={4}>
-              <Typography variant="h5"  color={theme.palette.fontcolor.dark}>Social Profiles</Typography>
+            <Grid>
+              <Typography
+                variant="h5"
+                fontWeight={isMobile ? "bold" : ""}
+                color={theme.palette.fontcolor.dark}
+              >
+                Social Profiles
+              </Typography>
             </Grid>
-            <Grid container item xs={4}>
+            <Grid container>
               <Avatar
                 sx={{
                   borderRadius: 2,
@@ -152,7 +177,7 @@ function Footer() {
               >
                 <InstagramIcon />
               </Avatar>
-              <Grid item xs={4}>
+              <Grid>
                 <Avatar
                   sx={{
                     borderRadius: 2,
@@ -163,7 +188,7 @@ function Footer() {
                   <TwitterIcon />
                 </Avatar>
               </Grid>
-              <Grid item xs={4}>
+              <Grid>
                 <Avatar
                   sx={{
                     borderRadius: 2,
@@ -174,15 +199,13 @@ function Footer() {
                   <LinkedInIcon />
                 </Avatar>
               </Grid>
-              <Grid item xs={4}></Grid>
+              <Grid></Grid>
             </Grid>
           </Grid>
         </Grid>
         <Divider />
         <Grid
           container
-          item
-          xs={12}
           sx={{
             display: "flex",
             p: 2,
@@ -190,7 +213,7 @@ function Footer() {
             justifyContent: "center",
           }}
         >
-          <Typography variant="body1"  color={theme.palette.fontcolor.light}>
+          <Typography variant="body1" color={theme.palette.fontcolor.light}>
             © 2023 Skillbridge. All rights reserved.
           </Typography>
         </Grid>

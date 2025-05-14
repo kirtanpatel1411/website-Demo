@@ -1,5 +1,5 @@
-import React from "react";
-import theme from "../theme/theme";
+import { useTheme } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import Header from "./Header";
 import Container from "@mui/material/Container";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -26,12 +26,15 @@ import { Avatar, Button } from "@mui/material";
 import Footer from "./Footer";
 
 function Login() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTab = useMediaQuery(theme.breakpoints.down("md"));
   const [showPassword, setShowPassword] = useState(false);
   return (
     <>
       <Header />
       <Container
-        maxWidth="xl"
+        maxWidth={isMobile ? "sm" : isTab ? "md" : "xl"}
         sx={{
           backgroundColor: theme.palette.background.default,
         }}
@@ -40,35 +43,41 @@ function Login() {
           container
           spacing={2}
           sx={{
-            padding: 2,
+            padding: isMobile ? 0 : 2,
             width: "100%",
           }}
         >
           <Grid
             container
-            spacing={2}
+            spacing={5}
             sx={{
-              padding: 5,
+              padding: isMobile ? 1 : 5,
               display: "flex",
+              flexDirection: isMobile
+                ? "column-reverse"
+                : isTab
+                ? "column-reverse"
+                : "row",
+
               justifyContent: "center",
-              gap: 10,
+              gap: isMobile ? 0 : 10,
               width: "100%",
-              display: "flex",
             }}
           >
             <Grid
+              spacing={5}
               container
-              item
-              xs={12}
               sx={{
-                width: "50%",
+                width: isMobile ? "100%" : isTab ? "100%" : "50%",
                 display: "flex",
                 alignItems: "end",
               }}
             >
-              <Grid item xs={12}>
-                <Typography variant="h4"  color={theme.palette.fontcolor.main}>Students Testimonials</Typography>
-                <Typography variant="body1"  color={theme.palette.fontcolor.light}>
+              <Grid>
+                <Typography variant={isMobile ? "h4" : "h3"}>
+                  Students Testimonials
+                </Typography>
+                <Typography variant={isMobile ? "body2" : "body1"}>
                   Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam
                   eget elit id imperdiet et. Cras eu sit dignissim lorem nibh
                   et. Ac cum eget habitasse in velit fringilla feugiat senectus
@@ -76,8 +85,6 @@ function Login() {
                 </Typography>
               </Grid>
               <Grid
-                item
-                xs={12}
                 sx={{
                   width: "100%",
                 }}
@@ -86,21 +93,21 @@ function Login() {
                   sx={{
                     width: "100%",
                     height: "auto",
-                    backgroundColor:  theme.palette.background.main,
+                    backgroundColor: theme.palette.background.main,
                     borderRadius: 2,
                   }}
                 >
                   <Grid
                     container
-                    spacing={5}
+                    spacing={isMobile ? 2 : 5}
                     sx={{
                       width: "100%",
                       height: "auto",
-                      p: 3,
+                      p: isMobile ? 1 : 3,
                     }}
                   >
-                    <Grid item xs={12}>
-                      <Typography variant="body1"  color={theme.palette.fontcolor.light}>
+                    <Grid>
+                      <Typography variant={isMobile ? "body2" : "h6"}>
                         The web design course provided a solid foundation for
                         me. The instructors were knowledgeable and supportive,
                         and the interactive learning environment was engaging. I
@@ -113,8 +120,6 @@ function Login() {
                       }}
                     />
                     <Grid
-                      item
-                      xs={12}
                       sx={{
                         display: "flex",
                         flexDirection: "row",
@@ -123,8 +128,6 @@ function Login() {
                       }}
                     >
                       <Grid
-                        item
-                        xs={6}
                         sx={{
                           display: "flex",
                           flexDirection: "row",
@@ -137,18 +140,19 @@ function Login() {
                             borderRadius: 2,
                           }}
                         >
-                        <img src={img} alt="" 
-                        style={{
-                            width: 40,
-                        }}
-                        />
+                          <img
+                            src={img}
+                            alt=""
+                            style={{
+                              width: 40,
+                            }}
+                          />
                         </Avatar>
-                        <Typography variant="h5"  color={theme.palette.fontcolor.dark}>kirtan</Typography>
+                        <Typography variant={isMobile ? "h6" : "h5"}>
+                          kirtan
+                        </Typography>
                       </Grid>
-                      <Button
-                      className="Gray"
-                        variant="outlined"
-                      >
+                      <Button className="Gray" variant="outlined">
                         Read More
                       </Button>
                     </Grid>
@@ -156,8 +160,6 @@ function Login() {
                 </Box>
               </Grid>
               <Grid
-                item
-                xs={12}
                 sx={{
                   width: "100%",
                   display: "flex",
@@ -167,7 +169,7 @@ function Login() {
                 }}
               >
                 <Button
-                className="white"
+                  className="white"
                   sx={{
                     p: 2,
                   }}
@@ -176,7 +178,7 @@ function Login() {
                   <ArrowBackIosNewIcon />
                 </Button>
                 <Button
-                className="white"
+                  className="white"
                   sx={{
                     p: 2,
                   }}
@@ -188,15 +190,11 @@ function Login() {
             </Grid>
             <Grid
               container
-              item
-              xs={12}
               sx={{
-                width: "35%",
+                width: isMobile ? "100%" : isTab ? "100%" : "35%",
               }}
             >
               <Grid
-                item
-                xs={12}
                 sx={{
                   width: "100%",
                   display: "flex",
@@ -205,15 +203,13 @@ function Login() {
                 <Box
                   sx={{
                     width: "100%",
-                    backgroundColor:  theme.palette.background.main,
-                    p: 4,
+                    backgroundColor: theme.palette.background.main,
+                    p: isMobile ? 2 : 4,
                     borderRadius: 3,
                   }}
                 >
                   <Grid
                     container
-                    item
-                    xs={12}
                     sx={{
                       width: "100%",
                       display: "flex",
@@ -221,10 +217,10 @@ function Login() {
                       alignItems: "center",
                     }}
                   >
-                    <Typography variant="h4" fontWeight="bold" gutterBottom  color={theme.palette.fontcolor.dark}>
+                    <Typography variant={isMobile ? "h4" : "h3"} gutterBottom>
                       Login
                     </Typography>
-                    <Typography variant="body1" sx={{ mb: 3, color:theme.palette.fontcolor.light }}>
+                    <Typography variant="body1" sx={{ mb: 3 }}>
                       Welcome back! Please log in to access your account.
                     </Typography>
                   </Grid>
@@ -266,14 +262,18 @@ function Login() {
                       control={<Checkbox />}
                       label="Remember Me"
                     />
-                    <Link href="#" underline="hover" sx={{ color: theme.palette.fontcolor.light}}>
+                    <Link
+                      href="#"
+                      underline="hover"
+                      sx={{ color: theme.palette.fontcolor.light }}
+                    >
                       Forgot Password?
                     </Link>
                   </Grid>
 
                   <Button
-                  variant="contained"
-                  className="orange"
+                    variant="contained"
+                    className="orange"
                     fullWidth
                     sx={{
                       py: 1.5,
@@ -301,13 +301,17 @@ function Login() {
                     Login with Google
                   </Button>
 
-                  <Typography textAlign="center"  color={theme.palette.fontcolor.light}>
+                  <Typography
+                    textAlign="center"
+                    variant="body1"
+                    color={theme.palette.fontcolor.light}
+                  >
                     Don’t have an account?{" "}
                     <Link
                       href="#"
                       underline="hover"
                       fontWeight="bold"
-                      sx={{ color:theme.palette.primary.main }}
+                      sx={{ color: theme.palette.primary.main }}
                     >
                       Sign Up
                     </Link>
