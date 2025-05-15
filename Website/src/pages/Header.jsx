@@ -144,7 +144,13 @@ export default function Header() {
   );
 
   return (
-    <Box>
+    <Box  
+    sx={{
+      position : "sticky",
+      top : 0 ,
+      zIndex : 1000 ,
+    }}
+    >
       <Box
         sx={{
           backgroundColor: theme.palette.primary.main,
