@@ -4,7 +4,7 @@ export const MuiButton = {
     root: {
       // padding: "10px 20px",
       cursor: "pointer",
-      fontFamily: "cursive",
+      fontFamily: "",
       transition: "background-color 0.3s ease",
     },
   },
@@ -63,7 +63,7 @@ export const MuiButton = {
 export const MuiTypography = {
   styleOverrides: {
     root: {
-      fontFamily: "cursive",
+      // fontFamily: "cur/sive",
     },
   },
   variants: [
